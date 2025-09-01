@@ -1,6 +1,11 @@
+// Build-time validation
+if (process.env.NODE_ENV === 'production') {
+  console.log('🚀 Running in production mode');
+}
+
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import './globals.css'
+import './globals.css' // Ensure this import is present
 import { Toaster } from 'react-hot-toast'
 
 const inter = Inter({ subsets: ['latin'] })

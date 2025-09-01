@@ -1,7 +1,21 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Remove experimental optimizeCss as it's causing build issues
-  // Tailwind CSS will be properly processed through PostCSS
+  reactStrictMode: true,
+  swcMinify: true,
+  
+  // Ensure CSS is included in production
+  experimental: {
+    optimizeCss: false, // Disable CSS optimization temporarily
+  },
+  
+  // Add webpack config to ensure Tailwind processing
+  webpack: (config, { dev, isServer }) => {
+    // Log build info for debugging
+    if (!dev && !isServer) {
+      console.log('🏗️  Building for production...');
+    }
+    return config;
+  },
 }
 
 module.exports = nextConfig

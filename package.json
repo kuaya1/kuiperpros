@@ -7,6 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "test:prod": "npm run build && npm run start",
+    "prebuild": "node scripts/validate-tailwind.js",
+    "postbuild": "node scripts/check-css-size.js",
     "postinstall": "prisma generate"
   },
   "dependencies": {
