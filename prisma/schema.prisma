@@ -1,0 +1,298 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  customer
+  technician
+  admin
+}
+
+enum PropertyType {
+  residential
+  commercial
+}
+
+enum RoofType {
+  shingle
+  tile
+  metal
+  flat
+  other
+}
+
+enum KitStatus {
+  have_kit
+  need_kit
+  not_sure
+}
+
+enum QuoteStatus {
+  pending
+  reviewed
+  assigned
+  completed
+  cancelled
+}
+
+enum JobStatus {
+  available
+  assigned
+  in_progress
+  completed
+  cancelled
+}
+
+enum TechnicianStatus {
+  pending
+  approved
+  suspended
+  rejected
+}
+
+enum PaymentStatus {
+  pending
+  processing
+  completed
+  failed
+  refunded
+}
+
+model User {
+  id           String   @id @default(uuid())
+  email        String   @unique
+  passwordHash String?  @map("password_hash")
+  role         UserRole
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+  
+  customer     Customer?
+  technician   Technician?
+  adminActivities AdminActivity[]
+  approvedTechnicians Technician[] @relation("ApprovedBy")
+  
+  @@map("users")
+}
+
+model Customer {
+  id               String   @id @default(uuid())
+  userId           String   @unique @map("user_id")
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  firstName        String   @map("first_name")
+  lastName         String   @map("last_name")
+  phone            String?
+  stripeCustomerId String?  @map("stripe_customer_id")
+  createdAt        DateTime @default(now()) @map("created_at")
+  updatedAt        DateTime @updatedAt @map("updated_at")
+  
+  quoteRequests    QuoteRequest[]
+  jobs             Job[]
+  payments         Payment[]
+  
+  @@map("customers")
+}
+
+model Technician {
+  id                  String   @id @default(uuid())
+  userId              String   @unique @map("user_id")
+  user                User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  firstName           String   @map("first_name")
+  lastName            String   @map("last_name")
+  phone               String
+  companyName         String?  @map("company_name")
+  businessLicense     String?  @map("business_license")
+  insuranceNumber     String?  @map("insurance_number")
+  status              TechnicianStatus @default(pending)
+  serviceRadiusMiles  Int      @default(50) @map("service_radius_miles")
+  
+  streetAddress       String?  @map("street_address")
+  city                String?
+  state               String?
+  zipCode             String?  @map("zip_code")
+  country             String   @default("US")
+  latitude            Float?
+  longitude           Float?
+  
+  stripeAccountId     String?  @map("stripe_account_id")
+  baseRate            Decimal? @map("base_rate")
+  totalEarnings       Decimal  @default(0) @map("total_earnings")
+  
+  jobsCompleted       Int      @default(0) @map("jobs_completed")
+  averageRating       Decimal  @default(0) @map("average_rating")
+  
+  licenseDocumentUrl  String?  @map("license_document_url")
+  insuranceDocumentUrl String? @map("insurance_document_url")
+  certificationUrls   String[] @map("certification_urls")
+  
+  createdAt           DateTime @default(now()) @map("created_at")
+  updatedAt           DateTime @updatedAt @map("updated_at")
+  approvedAt          DateTime? @map("approved_at")
+  approvedById        String?  @map("approved_by")
+  approvedBy          User?    @relation("ApprovedBy", fields: [approvedById], references: [id])
+  
+  serviceAreas        TechnicianServiceArea[]
+  assignedQuotes      QuoteRequest[]
+  jobs                Job[]
+  payments            Payment[]
+  
+  @@map("technicians")
+}
+
+model TechnicianServiceArea {
+  id           String     @id @default(uuid())
+  technicianId String     @map("technician_id")
+  technician   Technician @relation(fields: [technicianId], references: [id], onDelete: Cascade)
+  zipCode      String     @map("zip_code")
+  city         String?
+  state        String?
+  isPrimary    Boolean    @default(false) @map("is_primary")
+  createdAt    DateTime   @default(now()) @map("created_at")
+  
+  @@unique([technicianId, zipCode])
+  @@map("technician_service_areas")
+}
+
+model QuoteRequest {
+  id                    String   @id @default(uuid())
+  customerId            String?  @map("customer_id")
+  customer              Customer? @relation(fields: [customerId], references: [id])
+  
+  serviceStreetAddress  String   @map("service_street_address")
+  serviceCity           String   @map("service_city")
+  serviceState          String   @map("service_state")
+  serviceZipCode        String   @map("service_zip_code")
+  serviceLatitude       Float?   @map("service_latitude")
+  serviceLongitude      Float?   @map("service_longitude")
+  
+  propertyType          PropertyType @map("property_type")
+  stories               Int?
+  roofType              RoofType? @map("roof_type")
+  kitStatus             KitStatus @map("kit_status")
+  
+  contactFirstName      String   @map("contact_first_name")
+  contactLastName       String   @map("contact_last_name")
+  contactEmail          String   @map("contact_email")
+  contactPhone          String   @map("contact_phone")
+  
+  specialRequests       String?  @map("special_requests")
+  photoUrls             String[] @map("photo_urls")
+  
+  status                QuoteStatus @default(pending)
+  assignedTechnicianId  String?  @map("assigned_technician_id")
+  assignedTechnician    Technician? @relation(fields: [assignedTechnicianId], references: [id])
+  
+  estimatedPrice        Decimal? @map("estimated_price")
+  finalPrice            Decimal? @map("final_price")
+  
+  createdAt             DateTime @default(now()) @map("created_at")
+  reviewedAt            DateTime? @map("reviewed_at")
+  assignedAt            DateTime? @map("assigned_at")
+  completedAt           DateTime? @map("completed_at")
+  
+  source                String   @default("website")
+  referrer              String?
+  
+  job                   Job?
+  
+  @@map("quote_requests")
+}
+
+model Job {
+  id                  String   @id @default(uuid())
+  quoteRequestId      String   @unique @map("quote_request_id")
+  quoteRequest        QuoteRequest @relation(fields: [quoteRequestId], references: [id])
+  customerId          String?  @map("customer_id")
+  customer            Customer? @relation(fields: [customerId], references: [id])
+  technicianId        String?  @map("technician_id")
+  technician          Technician? @relation(fields: [technicianId], references: [id])
+  
+  status              JobStatus @default(available)
+  scheduledDate       DateTime? @map("scheduled_date")
+  scheduledTimeSlot   String?  @map("scheduled_time_slot")
+  
+  actualStartTime     DateTime? @map("actual_start_time")
+  actualEndTime       DateTime? @map("actual_end_time")
+  completionNotes     String?  @map("completion_notes")
+  completionPhotoUrls String[] @map("completion_photo_urls")
+  
+  technicianPayout    Decimal? @map("technician_payout")
+  customerPrice       Decimal? @map("customer_price")
+  
+  createdAt           DateTime @default(now()) @map("created_at")
+  assignedAt          DateTime? @map("assigned_at")
+  startedAt           DateTime? @map("started_at")
+  completedAt         DateTime? @map("completed_at")
+  
+  customerRating      Int?     @map("customer_rating")
+  customerReview      String?  @map("customer_review")
+  reviewedAt          DateTime? @map("reviewed_at")
+  
+  payments            Payment[]
+  
+  @@map("jobs")
+}
+
+model Payment {
+  id                    String   @id @default(uuid())
+  jobId                 String?  @map("job_id")
+  job                   Job?     @relation(fields: [jobId], references: [id])
+  customerId            String?  @map("customer_id")
+  customer              Customer? @relation(fields: [customerId], references: [id])
+  technicianId          String?  @map("technician_id")
+  technician            Technician? @relation(fields: [technicianId], references: [id])
+  
+  amount                Decimal
+  currency              String   @default("USD")
+  status                PaymentStatus @default(pending)
+  paymentType           String?  @map("payment_type")
+  
+  stripePaymentIntentId String?  @map("stripe_payment_intent_id")
+  stripeChargeId        String?  @map("stripe_charge_id")
+  stripeTransferId      String?  @map("stripe_transfer_id")
+  
+  description           String?
+  metadata              Json?
+  
+  createdAt             DateTime @default(now()) @map("created_at")
+  processedAt           DateTime? @map("processed_at")
+  completedAt           DateTime? @map("completed_at")
+  failedAt              DateTime? @map("failed_at")
+  
+  failureReason         String?  @map("failure_reason")
+  
+  @@map("payments")
+}
+
+model EmailNotification {
+  id             String   @id @default(uuid())
+  recipientEmail String   @map("recipient_email")
+  recipientType  UserRole? @map("recipient_type")
+  subject        String
+  templateName   String?  @map("template_name")
+  sentAt         DateTime @default(now()) @map("sent_at")
+  status         String   @default("sent")
+  errorMessage   String?  @map("error_message")
+  metadata       Json?
+  
+  @@map("email_notifications")
+}
+
+model AdminActivity {
+  id         String   @id @default(uuid())
+  adminId    String   @map("admin_id")
+  admin      User     @relation(fields: [adminId], references: [id])
+  action     String
+  entityType String?  @map("entity_type")
+  entityId   String?  @map("entity_id")
+  details    Json?
+  ipAddress  String?  @map("ip_address")
+  userAgent  String?  @map("user_agent")
+  createdAt  DateTime @default(now()) @map("created_at")
+  
+  @@map("admin_activities")
+}
