@@ -24,14 +24,14 @@ export default function Navigation() {
             <Link href="#services" className="text-gray-700 hover:text-brand-600 transition">
               Services
             </Link>
+            <Link href="/blog" className="text-gray-700 hover:text-brand-600 transition">
+              Blog
+            </Link>
             <Link href="#coverage" className="text-gray-700 hover:text-brand-600 transition">
               Coverage
             </Link>
-            <Link href="#faq" className="text-gray-700 hover:text-brand-600 transition">
-              FAQ
-            </Link>
-            <Link href="/technician/login">
-              <Button variant="outline">Technician Login</Button>
+            <Link href="/technician/apply" className="text-gray-700 hover:text-brand-600 transition">
+              Join Network
             </Link>
             <Link href="/quote">
               <Button>Get Free Quote</Button>
@@ -59,14 +59,14 @@ export default function Navigation() {
               <Link href="#services" className="text-gray-700 hover:text-brand-600">
                 Services
               </Link>
+              <Link href="/blog" className="text-gray-700 hover:text-brand-600">
+                Blog
+              </Link>
               <Link href="#coverage" className="text-gray-700 hover:text-brand-600">
                 Coverage
               </Link>
-              <Link href="#faq" className="text-gray-700 hover:text-brand-600">
-                FAQ
-              </Link>
-              <Link href="/technician/login" className="text-gray-700 hover:text-brand-600">
-                Technician Login
+              <Link href="/technician/apply" className="text-gray-700 hover:text-brand-600">
+                Join Network
               </Link>
               <Link href="/quote">
                 <Button className="w-full">Get Free Quote</Button>

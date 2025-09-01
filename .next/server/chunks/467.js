@@ -1,0 +1,46 @@
+exports.id=467,exports.ids=[467],exports.modules={15656:(e,t,i)=>{Promise.resolve().then(i.bind(i,41072)),Promise.resolve().then(i.bind(i,40578)),Promise.resolve().then(i.bind(i,44669))},36950:(e,t,i)=>{Promise.resolve().then(i.t.bind(i,2583,23)),Promise.resolve().then(i.t.bind(i,26840,23)),Promise.resolve().then(i.t.bind(i,38771,23)),Promise.resolve().then(i.t.bind(i,13225,23)),Promise.resolve().then(i.t.bind(i,9295,23)),Promise.resolve().then(i.t.bind(i,43982,23))},41072:(e,t,i)=>{"use strict";i.r(t),i.d(t,{default:()=>u});var n=i(95344),r=i(3729),s=i(14513),a=i(33037),o=i(79200),l=i(99119),c=i(87292);function u(){let[e,t]=(0,r.useState)(!1),[i,u]=(0,r.useState)(!1),[p,d]=(0,r.useState)(""),[m,g]=(0,r.useState)(!1);(0,r.useEffect)(()=>{let e=e=>{e.clientY<=0&&!i&&(t(!0),u(!0))},n=setTimeout(()=>{i||(t(!0),u(!0))},3e4);return document.addEventListener("mouseleave",e),()=>{document.removeEventListener("mouseleave",e),clearTimeout(n)}},[i]);let f=async e=>{e.preventDefault(),console.log("Exit intent email signup:",p),g(!0),setTimeout(()=>{t(!1)},2e3)};return n.jsx(l.M,{children:e&&n.jsx(c.E.div,{initial:{opacity:0},animate:{opacity:1},exit:{opacity:0},className:"fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4",children:(0,n.jsxs)(c.E.div,{initial:{scale:.8,opacity:0},animate:{scale:1,opacity:1},exit:{scale:.8,opacity:0},className:"bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 relative",children:[n.jsx("button",{onClick:()=>{t(!1)},className:"absolute top-4 right-4 text-gray-400 hover:text-gray-600",children:n.jsx(s.Z,{className:"h-6 w-6"})}),m?(0,n.jsxs)("div",{className:"text-center",children:[n.jsx("div",{className:"bg-green-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4",children:n.jsx(a.Z,{className:"h-8 w-8 text-green-600"})}),n.jsx("h2",{className:"text-2xl font-bold text-gray-900 mb-2",children:"You're All Set!"}),n.jsx("p",{className:"text-gray-600",children:"We'll notify you as soon as Kuiper becomes available in your area."})]}):(0,n.jsxs)(n.Fragment,{children:[(0,n.jsxs)("div",{className:"text-center mb-6",children:[n.jsx("div",{className:"bg-brand-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4",children:n.jsx(a.Z,{className:"h-8 w-8 text-brand-600"})}),n.jsx("h2",{className:"text-2xl font-bold text-gray-900 mb-2",children:"Don't Miss Out!"}),n.jsx("p",{className:"text-gray-600",children:"Get notified the moment Kuiper launches in your area and secure early bird pricing."})]}),(0,n.jsxs)("form",{onSubmit:f,className:"space-y-4",children:[n.jsx("input",{type:"email",value:p,onChange:e=>d(e.target.value),placeholder:"Enter your email address",className:"w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent",required:!0}),n.jsx("button",{type:"submit",className:"w-full bg-brand-600 text-white py-3 rounded-lg hover:bg-brand-700 transition-colors font-medium",children:"Get Early Access"})]}),(0,n.jsxs)("div",{className:"flex items-center space-x-2 mt-4 text-sm text-gray-500",children:[n.jsx(o.Z,{className:"h-4 w-4 text-green-500"}),n.jsx("span",{children:"Join 10,000+ people waiting for Kuiper"})]})]})]})})})}},40578:(e,t,i)=>{"use strict";i.r(t),i.d(t,{default:()=>a});var n=i(95344),r=i(62604),s=i(72171);function a({googleAnalyticsId:e="G-XXXXXXXXXX",microsoftClarityId:t="xxxxxxxxx"}){return(0,n.jsxs)(n.Fragment,{children:[n.jsx(r.Wi,{gaId:e}),n.jsx(s.default,{id:"microsoft-clarity",strategy:"afterInteractive",children:`
+          (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+          })(window, document, "clarity", "script", "${t}");
+        `}),n.jsx(s.default,{id:"custom-analytics",strategy:"afterInteractive",children:`
+          // Custom event tracking functions
+          window.trackQuoteRequest = function(location) {
+            if (typeof gtag !== 'undefined') {
+              gtag('event', 'quote_request', {
+                'custom_parameter': location,
+                'event_category': 'engagement',
+                'event_label': 'Quote Form'
+              });
+            }
+            if (typeof clarity !== 'undefined') {
+              clarity('event', 'quote_request');
+            }
+          };
+
+          window.trackTechnicianSignup = function() {
+            if (typeof gtag !== 'undefined') {
+              gtag('event', 'technician_signup', {
+                'event_category': 'engagement',
+                'event_label': 'Technician Application'
+              });
+            }
+            if (typeof clarity !== 'undefined') {
+              clarity('event', 'technician_signup');
+            }
+          };
+
+          window.trackNewsletterSignup = function(source) {
+            if (typeof gtag !== 'undefined') {
+              gtag('event', 'newsletter_signup', {
+                'custom_parameter': source,
+                'event_category': 'engagement',
+                'event_label': 'Newsletter'
+              });
+            }
+            if (typeof clarity !== 'undefined') {
+              clarity('event', 'newsletter_signup');
+            }
+          };
+        `})]})}},93561:(e,t,i)=>{"use strict";i.r(t),i.d(t,{default:()=>x,metadata:()=>h});var n=i(25036),r=i(80265),s=i.n(r);i(67272);var a=i(69636),o=i(86843);let l=(0,o.createProxy)(String.raw`C:\Users\12244\OneDrive\Documents\Kuiperpros\components\seo\Analytics.tsx`),{__esModule:c,$$typeof:u}=l,p=l.default;var d=i(86759);let m=(0,o.createProxy)(String.raw`C:\Users\12244\OneDrive\Documents\Kuiperpros\components\lead-capture\ExitIntentPopup.tsx`),{__esModule:g,$$typeof:f}=m,y=m.default;console.log("\uD83D\uDE80 Running in production mode");let h={title:"KuiperPros - Professional Amazon Kuiper Satellite Internet Installation",description:"Connect with certified technicians for professional Amazon Kuiper satellite internet installation across the USA. Fast, reliable, and professional service nationwide.",keywords:"Amazon Kuiper, satellite internet, installation, technicians, nationwide service, internet installation",authors:[{name:"KuiperPros Team"}],robots:"index, follow",openGraph:{title:"KuiperPros - Professional Amazon Kuiper Installation",description:"Professional Amazon Kuiper satellite internet installation nationwide",url:"https://kuiperpros.com",siteName:"KuiperPros",images:[{url:"https://kuiperpros.com/og-image.jpg",width:1200,height:630,alt:"KuiperPros - Professional Kuiper Installation"}],locale:"en_US",type:"website"},twitter:{card:"summary_large_image",title:"KuiperPros - Professional Amazon Kuiper Installation",description:"Professional Amazon Kuiper satellite internet installation nationwide",images:["https://kuiperpros.com/og-image.jpg"]},verification:{google:"your-google-site-verification-code"}};function x({children:e}){return(0,n.jsxs)("html",{lang:"en",children:[(0,n.jsxs)("head",{children:[n.jsx(d.Z,{type:"Organization",data:{name:"KuiperPros",description:"Professional Amazon Kuiper satellite internet installation services",url:"https://kuiperpros.com",telephone:"+1-800-KUIPER-1",email:"info@kuiperpros.com"}}),n.jsx(p,{})]}),(0,n.jsxs)("body",{className:s().className,children:[e,n.jsx(y,{}),n.jsx(a.x7,{position:"top-right"})]})]})}},86759:(e,t,i)=>{"use strict";i.d(t,{Z:()=>r});var n=i(25036);function r({type:e,data:t}){return n.jsx("script",{type:"application/ld+json",dangerouslySetInnerHTML:{__html:JSON.stringify((()=>{let i={"@context":"https://schema.org","@type":e,...t};switch(e){case"LocalBusiness":return{...i,"@type":"LocalBusiness",name:"KuiperPros",description:"Professional Amazon Kuiper satellite internet installation services",url:"https://kuiperpros.com",telephone:"+1-800-KUIPER-1",address:{"@type":"PostalAddress",addressCountry:"US",addressRegion:"Nationwide"},serviceArea:{"@type":"Country",name:"United States"},hasOfferCatalog:{"@type":"OfferCatalog",name:"Kuiper Installation Services",itemListElement:[{"@type":"Offer",itemOffered:{"@type":"Service",name:"Kuiper Satellite Installation",description:"Professional installation of Amazon Kuiper satellite internet equipment"}}]},...t};case"Service":return{...i,"@type":"Service",provider:{"@type":"Organization",name:"KuiperPros",url:"https://kuiperpros.com"},areaServed:{"@type":"Country",name:"United States"},...t};case"Article":return{...i,"@type":"Article",publisher:{"@type":"Organization",name:"KuiperPros",url:"https://kuiperpros.com",logo:{"@type":"ImageObject",url:"https://kuiperpros.com/logo.png"}},...t};case"Organization":return{...i,"@type":"Organization",name:"KuiperPros",url:"https://kuiperpros.com",logo:"https://kuiperpros.com/logo.png",contactPoint:{"@type":"ContactPoint",telephone:"+1-800-KUIPER-1",contactType:"customer service",areaServed:"US"},sameAs:["https://facebook.com/kuiperpros","https://twitter.com/kuiperpros","https://linkedin.com/company/kuiperpros"],...t};default:return i}})())}})}},67272:()=>{}};

@@ -1,0 +1,12 @@
+# *
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_next/
+
+# Host
+Host: https://kuiperpros.com
+
+# Sitemaps
+Sitemap: https://kuiperpros.com/sitemap.xml
