@@ -1,13 +1,13 @@
 {
   "/_not-found": "app/_not-found.js",
   "/api/admin/quotes/route": "app/api/admin/quotes/route.js",
-  "/api/admin/technicians/route": "app/api/admin/technicians/route.js",
-  "/api/quotes/submit/route": "app/api/quotes/submit/route.js",
   "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
-  "/api/technician/jobs/[jobId]/accept/route": "app/api/technician/jobs/[jobId]/accept/route.js",
-  "/quote/page": "app/quote/page.js",
-  "/api/technician/jobs/route": "app/api/technician/jobs/route.js",
   "/api/admin/technicians/[technicianId]/approve/route": "app/api/admin/technicians/[technicianId]/approve/route.js",
+  "/api/technician/jobs/[jobId]/accept/route": "app/api/technician/jobs/[jobId]/accept/route.js",
+  "/api/quotes/submit/route": "app/api/quotes/submit/route.js",
+  "/api/technician/jobs/route": "app/api/technician/jobs/route.js",
+  "/api/admin/technicians/route": "app/api/admin/technicians/route.js",
+  "/quote/page": "app/quote/page.js",
   "/admin/dashboard/page": "app/admin/dashboard/page.js",
   "/technician/dashboard/page": "app/technician/dashboard/page.js"
 }
