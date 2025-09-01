@@ -47,4 +47,31 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
             <span className="text-gray-700">Payments</span>
           </Link>
           
-          <Link href="/admin/notifications" className="flex items-center px-6 py
+          <Link href="/admin/notifications" className="flex items-center px-6 py-3 hover:bg-gray-100">
+            <BellIcon className="h-5 w-5 mr-3 text-gray-600" />
+            <span className="text-gray-700">Notifications</span>
+          </Link>
+          
+          <Link href="/admin/settings" className="flex items-center px-6 py-3 hover:bg-gray-100">
+            <Cog6ToothIcon className="h-5 w-5 mr-3 text-gray-600" />
+            <span className="text-gray-700">Settings</span>
+          </Link>
+        </nav>
+        
+        <div className="absolute bottom-0 w-64 p-6">
+          <Link href="/auth/signout" className="flex items-center px-6 py-3 hover:bg-gray-100 rounded-md">
+            <ArrowLeftOnRectangleIcon className="h-5 w-5 mr-3 text-gray-600" />
+            <span className="text-gray-700">Sign Out</span>
+          </Link>
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="flex-1 overflow-auto">
+        <main className="p-8">
+          {children}
+        </main>
+      </div>
+    </div>
+  )
+}

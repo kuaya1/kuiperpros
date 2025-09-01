@@ -136,7 +136,7 @@ export async function POST(request: NextRequest) {
           templateName: "quote-confirmation",
           metadata: { quoteRequestId: quoteRequest.id }
         },
-        ...availableTechnicians.map(tech => ({
+        ...availableTechnicians.map((tech: any) => ({
           recipientEmail: tech.user.email,
           recipientType: "technician" as const,
           subject: "New Installation Opportunity - KuiperPros",
@@ -158,7 +158,7 @@ export async function POST(request: NextRequest) {
     
     if (error instanceof z.ZodError) {
       return NextResponse.json(
-        { error: "Invalid data", details: error.errors },
+        { error: "Invalid data", details: error.issues },
         { status: 400 }
       )
     }
