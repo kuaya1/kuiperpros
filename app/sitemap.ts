@@ -4,16 +4,43 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://kuiperpros.com'
   const currentDate = new Date()
 
-  return [
+  // Define all our location pages with custom priorities
+  const locationPages = [
+    { state: 'california', priority: 0.8 },
+    { state: 'texas', priority: 0.8 },
+    { state: 'florida', priority: 0.8 },
+    // Future states can be added here
+  ]
+
+  // Define blog posts with publication dates and priorities
+  const blogPosts = [
+    { 
+      slug: 'do-i-need-professional-kuiper-installation',
+      priority: 0.7,
+      lastModified: new Date('2024-12-01')
+    },
+    { 
+      slug: 'what-is-amazon-project-kuiper',
+      priority: 0.6,
+      lastModified: new Date('2024-11-15')
+    },
+    { 
+      slug: 'kuiper-vs-starlink-comparison',
+      priority: 0.6,
+      lastModified: new Date('2024-11-10')
+    },
+  ]
+
+  const sitemap: MetadataRoute.Sitemap = [
     // Homepage - Highest Priority
     {
       url: baseUrl,
       lastModified: currentDate,
-      changeFrequency: 'monthly',
+      changeFrequency: 'weekly',
       priority: 1.0,
     },
     
-    // High Priority Pages - Core Service Pages
+    // High-Priority Service Pages
     {
       url: `${baseUrl}/quote`,
       lastModified: currentDate,
@@ -26,68 +53,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.9,
     },
-
-    // Location Pages - State Level
-    {
-      url: `${baseUrl}/locations/california`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/locations/texas`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/locations/florida`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/locations/new-york`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-
-    // Competitive Analysis & Comparison Content
+    
+    // Competitive & Comparison Content
     {
       url: `${baseUrl}/kuiper-vs-starlink-installation`,
       lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
-
-    // Blog Content - Authority Building
+    
+    // Blog Section
     {
       url: `${baseUrl}/blog`,
       lastModified: currentDate,
       changeFrequency: 'weekly',
       priority: 0.7,
     },
-    {
-      url: `${baseUrl}/blog/do-i-need-professional-kuiper-installation`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/blog/what-is-amazon-project-kuiper`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/blog/kuiper-vs-starlink-comparison`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.6,
-    },
-
-    // Technician Network Pages
+    
+    // Technician & Business Pages
     {
       url: `${baseUrl}/technician/apply`,
       lastModified: currentDate,
@@ -97,148 +80,38 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${baseUrl}/technician/dashboard`,
       lastModified: currentDate,
-      changeFrequency: 'monthly',
+      changeFrequency: 'weekly',
       priority: 0.5,
     },
-
-    // Administrative Pages (Lower Priority)
+    
+    // Admin Pages (Lower Priority)
     {
       url: `${baseUrl}/admin/dashboard`,
       lastModified: currentDate,
-      changeFrequency: 'monthly',
+      changeFrequency: 'weekly',
       priority: 0.3,
     },
-
-    // Additional State Pages (Future Expansion)
-    {
-      url: `${baseUrl}/locations/pennsylvania`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/locations/illinois`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/locations/ohio`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/locations/georgia`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/locations/north-carolina`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/locations/michigan`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/locations/arizona`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/locations/washington`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-
-    // Future High-Value Content Pages
-    {
-      url: `${baseUrl}/kuiper-installation-cost`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/kuiper-vs-hughesnet-installation`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/certified-kuiper-installers`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-
-    // City-Level Pages (Top Markets)
-    {
-      url: `${baseUrl}/locations/los-angeles-kuiper-installation`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/locations/houston-kuiper-installation`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/locations/miami-kuiper-installation`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/locations/new-york-city-kuiper-installation`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/locations/chicago-kuiper-installation`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/locations/philadelphia-kuiper-installation`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/locations/phoenix-kuiper-installation`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/locations/san-antonio-kuiper-installation`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/locations/san-diego-kuiper-installation`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/locations/dallas-kuiper-installation`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.6,
-    },
   ]
+
+  // Dynamically add location pages
+  locationPages.forEach(location => {
+    sitemap.push({
+      url: `${baseUrl}/locations/${location.state}`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: location.priority,
+    })
+  })
+
+  // Dynamically add blog posts
+  blogPosts.forEach(post => {
+    sitemap.push({
+      url: `${baseUrl}/blog/${post.slug}`,
+      lastModified: post.lastModified,
+      changeFrequency: 'monthly',
+      priority: post.priority,
+    })
+  })
+
+  return sitemap
 }

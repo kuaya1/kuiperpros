@@ -1,0 +1,20 @@
+User-Agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_next/
+
+User-Agent: Googlebot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_next/
+
+User-Agent: Bingbot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_next/
+
+Host: https://kuiperpros.com
+Sitemap: https://kuiperpros.com/sitemap.xml

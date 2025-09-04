@@ -3,7 +3,7 @@ module.exports = {
   siteUrl: process.env.SITE_URL || 'https://kuiperpros.com',
   generateRobotsTxt: true,
   generateIndexSitemap: false,
-  exclude: ['/admin/*', '/api/*', '/sitemap.xml'], // Exclude the dynamic sitemap
+  exclude: ['/admin/*', '/api/*'],
   robotsTxtOptions: {
     policies: [
       {
@@ -13,7 +13,7 @@ module.exports = {
       },
     ],
     additionalSitemaps: [
-      'https://kuiperpros.com/sitemap.xml', // Dynamic sitemap from app/sitemap.ts
+      'https://kuiperpros.com/sitemap.xml',
     ],
   },
   transform: async (config, path) => {
@@ -31,19 +31,9 @@ module.exports = {
       '/technician': 0.6,
     }
 
-    // Enhanced change frequency based on content type
-    let changefreq = 'monthly'
-    if (path.includes('/blog/')) {
-      changefreq = 'weekly'
-    } else if (path.includes('/locations/')) {
-      changefreq = 'monthly'
-    } else if (path === '/' || path === '/quote') {
-      changefreq = 'weekly'
-    }
-
     return {
       loc: path,
-      changefreq: changefreq,
+      changefreq: path.includes('/blog/') ? 'weekly' : 'monthly',
       priority: priorities[path] || 0.6,
       lastmod: new Date().toISOString(),
     }
