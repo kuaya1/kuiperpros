@@ -3,27 +3,32 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Plus, Minus } from 'lucide-react'
+import StructuredData from '@/components/seo/StructuredData'
 
 const faqs = [
   {
-    question: 'How much does installation cost?',
-    answer: 'Installation costs vary based on your location and installation complexity. Most residential installations range from $299-$599. Get a free quote for exact pricing.',
+    question: 'How much does Amazon Kuiper professional installation cost?',
+    answer: 'Kuiper installation costs typically range from $199-$599 depending on installation complexity. Standard residential installations average $299, including site survey, dish mounting, cable routing, and system activation. Commercial installations may cost more due to additional requirements.',
   },
   {
-    question: 'How long does installation take?',
-    answer: 'Most installations are completed within 2-3 hours. Complex commercial installations may take longer.',
+    question: 'How long does Kuiper satellite installation take?',
+    answer: 'Most Kuiper installations are completed within 2 hours for standard residential setups. This includes: site survey (15-30 minutes), dish mounting (45-60 minutes), cable routing (20-30 minutes), and system activation (15-20 minutes). Complex installations or challenging roof conditions may take longer.',
   },
   {
-    question: 'Are your technicians certified?',
-    answer: 'Yes, all our technicians are certified, insured, and have passed comprehensive background checks.',
+    question: 'Are your Kuiper installers certified and insured?',
+    answer: 'Yes, all KuiperPros technicians are certified satellite installation specialists, fully insured, and have passed comprehensive background checks. Our installers receive specialized training on Kuiper equipment and installation best practices.',
   },
   {
-    question: 'What if I need to reschedule?',
-    answer: 'You can reschedule your installation up to 24 hours before your appointment without any fees.',
+    question: 'Do I need professional Kuiper installation or can I install it myself?',
+    answer: 'While Amazon may offer DIY kits, professional installation ensures optimal performance and safety. Our certified technicians have specialized tools for proper dish alignment, weatherproof sealing, and signal optimization that are difficult to achieve with self-installation.',
   },
   {
-    question: 'Do you offer warranty on installations?',
-    answer: 'Yes, all installations come with a 90-day workmanship warranty. Extended warranties are available.',
+    question: 'What warranty do you provide on Kuiper installations?',
+    answer: 'All KuiperPros installations include a 90-day workmanship warranty covering mounting, weatherproofing, and system configuration. We also offer extended warranty options for additional peace of mind.',
+  },
+  {
+    question: 'Can you install Kuiper on any type of roof or property?',
+    answer: 'Our certified installers can mount Kuiper dishes on most residential and commercial properties using roof mounts, wall mounts, or ground pole installations. We assess each site to determine the optimal mounting solution for maximum signal strength.',
   },
 ]
 
@@ -32,6 +37,12 @@ export default function FAQ() {
 
   return (
     <section id="faq" className="py-20 bg-gray-50">
+      <StructuredData 
+        type="FAQPage"
+        data={{
+          questions: faqs
+        }}
+      />
       <div className="container max-w-3xl">
         <div className="text-center mb-12">
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">

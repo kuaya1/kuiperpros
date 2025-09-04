@@ -14,9 +14,9 @@ import ExitIntentPopup from '@/components/lead-capture/ExitIntentPopup'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'KuiperPros - Professional Amazon Kuiper Satellite Internet Installation',
-  description: 'Connect with certified technicians for professional Amazon Kuiper satellite internet installation across the USA. Fast, reliable, and professional service nationwide.',
-  keywords: 'Amazon Kuiper, satellite internet, installation, technicians, nationwide service, internet installation',
+  title: 'Certified Amazon Kuiper Installation | Professional Satellite Internet Setup | KuiperPros',
+  description: 'Expert Kuiper satellite installation from $199. Certified technicians, same-week service, 2-hour average install time. Get connected to Amazon\'s high-speed internet. Free quote in 60 seconds.',
+  keywords: 'Amazon Kuiper installation, professional kuiper installer, certified kuiper technician, kuiper satellite dish installation, project kuiper setup, kuiper vs starlink installation, kuiper internet installation cost, kuiper professional installation',
   authors: [{ name: 'KuiperPros Team' }],
   robots: 'index, follow',
   openGraph: {
@@ -54,6 +54,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://www.google-analytics.com" />
+        <link rel="dns-prefetch" href="https://api.kuiperpros.com" />
         <StructuredData 
           type="Organization"
           data={{

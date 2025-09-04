@@ -18,17 +18,41 @@ export default function Navigation() {
           </Link>
 
           <div className="hidden md:flex items-center space-x-8">
-            <Link href="#how-it-works" className="text-gray-700 hover:text-brand-600 transition">
-              How It Works
-            </Link>
-            <Link href="#services" className="text-gray-700 hover:text-brand-600 transition">
-              Services
-            </Link>
+            <div className="relative group">
+              <Link href="/installation-guide" className="text-gray-700 hover:text-brand-600 transition">
+                Installation
+              </Link>
+              <div className="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                <div className="py-1">
+                  <Link href="/installation-guide" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                    Installation Guide
+                  </Link>
+                  <Link href="/kuiper-vs-starlink-installation" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                    Kuiper vs Competitors
+                  </Link>
+                </div>
+              </div>
+            </div>
+            <div className="relative group">
+              <Link href="/locations/california" className="text-gray-700 hover:text-brand-600 transition">
+                Locations
+              </Link>
+              <div className="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                <div className="py-1">
+                  <Link href="/locations/california" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                    California
+                  </Link>
+                  <Link href="/locations/texas" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                    Texas
+                  </Link>
+                  <Link href="/locations/florida" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                    Florida
+                  </Link>
+                </div>
+              </div>
+            </div>
             <Link href="/blog" className="text-gray-700 hover:text-brand-600 transition">
               Blog
-            </Link>
-            <Link href="#coverage" className="text-gray-700 hover:text-brand-600 transition">
-              Coverage
             </Link>
             <Link href="/technician/apply" className="text-gray-700 hover:text-brand-600 transition">
               Join Network
@@ -53,17 +77,20 @@ export default function Navigation() {
         {isMobileMenuOpen && (
           <div className="md:hidden py-4 border-t">
             <div className="flex flex-col space-y-4">
-              <Link href="#how-it-works" className="text-gray-700 hover:text-brand-600">
-                How It Works
+              <Link href="/installation-guide" className="text-gray-700 hover:text-brand-600">
+                Installation Guide
               </Link>
-              <Link href="#services" className="text-gray-700 hover:text-brand-600">
-                Services
+              <Link href="/kuiper-vs-starlink-installation" className="text-gray-700 hover:text-brand-600">
+                Kuiper vs Competitors
+              </Link>
+              <Link href="/locations/california" className="text-gray-700 hover:text-brand-600">
+                California
+              </Link>
+              <Link href="/locations/texas" className="text-gray-700 hover:text-brand-600">
+                Texas
               </Link>
               <Link href="/blog" className="text-gray-700 hover:text-brand-600">
                 Blog
-              </Link>
-              <Link href="#coverage" className="text-gray-700 hover:text-brand-600">
-                Coverage
               </Link>
               <Link href="/technician/apply" className="text-gray-700 hover:text-brand-600">
                 Join Network

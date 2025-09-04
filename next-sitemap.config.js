@@ -21,8 +21,14 @@ module.exports = {
     const priorities = {
       '/': 1.0,
       '/quote': 0.9,
-      '/blog': 0.8,
-      '/technician': 0.7,
+      '/installation-guide': 0.9,
+      '/kuiper-vs-starlink-installation': 0.8,
+      '/locations/california': 0.8,
+      '/locations/texas': 0.8,
+      '/locations/florida': 0.8,
+      '/locations/new-york': 0.8,
+      '/blog': 0.7,
+      '/technician': 0.6,
     }
 
     return {

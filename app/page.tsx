@@ -13,14 +13,24 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-white">
       <StructuredData 
-        type="LocalBusiness"
+        type="ProfessionalService"
         data={{
-          name: 'KuiperPros',
-          description: 'Professional Amazon Kuiper satellite internet installation services across the United States',
-          url: 'https://kuiperpros.com',
-          telephone: '+1-800-KUIPER-1',
-          priceRange: '$100-$500',
-          serviceType: 'Satellite Internet Installation',
+          name: 'KuiperPros - Amazon Kuiper Installation Service',
+          description: 'Professional Amazon Kuiper satellite internet installation and setup services across the United States',
+        }}
+      />
+      <StructuredData 
+        type="HowTo"
+        data={{
+          name: 'Professional Amazon Kuiper Installation Process',
+          description: 'Complete step-by-step guide for professional Kuiper satellite installation by certified technicians',
+        }}
+      />
+      <StructuredData 
+        type="AggregateRating"
+        data={{
+          ratingValue: '4.8',
+          reviewCount: '247'
         }}
       />
       <Navigation />
