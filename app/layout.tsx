@@ -14,6 +14,7 @@ import ExitIntentPopup from '@/components/lead-capture/ExitIntentPopup'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://kuiperpros.com'),
   title: 'Certified Amazon Kuiper Installation | Professional Satellite Internet Setup | KuiperPros',
   description: 'Expert Kuiper satellite installation from $199. Certified technicians, same-week service, 2-hour average install time. Get connected to Amazon\'s high-speed internet. Free quote in 60 seconds.',
   keywords: 'Amazon Kuiper installation, professional kuiper installer, certified kuiper technician, kuiper satellite dish installation, project kuiper setup, kuiper vs starlink installation, kuiper internet installation cost, kuiper professional installation',

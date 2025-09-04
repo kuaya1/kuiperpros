@@ -16,23 +16,23 @@ export default function HeroSection() {
             transition={{ duration: 0.5 }}
           >
             <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 mb-6">
-              Professional Amazon Kuiper Installation
-              <span className="text-brand-600"> Nationwide</span>
+              Certified Amazon Kuiper Installation
+              <span className="text-brand-600"> Professionals</span>
             </h1>
             <p className="text-xl text-gray-600 mb-8">
-              Connect with certified technicians for expert satellite internet installation. 
-              Fast, reliable, and professional service across all 50 states.
+              Connect with certified Kuiper installers for expert satellite internet setup. 
+              Professional dish mounting, weatherproof installation, and 2-hour average completion time across all 50 states.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 mb-8">
               <Link href="/quote">
                 <Button size="lg" className="w-full sm:w-auto">
-                  Get Free Installation Quote
+                  Get Free Kuiper Installation Quote
                 </Button>
               </Link>
-              <Link href="/technician/apply">
+              <Link href="/installation-guide">
                 <Button size="lg" variant="outline" className="w-full sm:w-auto">
-                  Become a Technician
+                  View Installation Process
                 </Button>
               </Link>
             </div>
