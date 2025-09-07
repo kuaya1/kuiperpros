@@ -20,6 +20,13 @@ export const metadata: Metadata = {
   keywords: 'Amazon Kuiper installation, professional kuiper installer, certified kuiper technician, kuiper satellite dish installation, project kuiper setup, kuiper vs starlink installation, kuiper internet installation cost, kuiper professional installation',
   authors: [{ name: 'KuiperPros Team' }],
   robots: 'index, follow',
+  icons: {
+    icon: [
+      { url: '/icon', type: 'image/png', sizes: '32x32' },
+      { url: '/icon.svg', type: 'image/svg+xml' },
+    ],
+    apple: { url: '/apple-icon', type: 'image/png', sizes: '180x180' },
+  },
   openGraph: {
     title: 'KuiperPros - Professional Amazon Kuiper Installation',
     description: 'Professional Amazon Kuiper satellite internet installation nationwide',
