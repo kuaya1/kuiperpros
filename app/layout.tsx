@@ -59,14 +59,14 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://www.google-analytics.com" />
         <link rel="dns-prefetch" href="https://api.kuiperpros.com" />
-        <StructuredData 
+        <StructuredData
           type="Organization"
           data={{
             name: 'KuiperPros',
             description: 'Professional Amazon Kuiper satellite internet installation services',
             url: 'https://kuiperpros.com',
             telephone: '+1-800-KUIPER-1',
-            email: 'info@kuiperpros.com',
+            email: 'kuiperpros@gmail.com',
           }}
         />
         <Analytics />

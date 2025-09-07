@@ -78,7 +78,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center space-x-2">
                 <Mail className="h-4 w-4 text-brand-400" />
-                <span className="text-gray-300">info@kuiperpros.com</span>
+                <span className="text-gray-300">kuiperpros@gmail.com</span>
               </li>
               <li className="flex items-center space-x-2">
                 <MapPin className="h-4 w-4 text-brand-400" />
