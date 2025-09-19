@@ -1,6 +1,8 @@
 'use client'
 
 import { GoogleAnalytics } from '@next/third-parties/google'
+import { Analytics as VercelAnalytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import Script from 'next/script'
 
 interface AnalyticsProps {
@@ -14,6 +16,12 @@ export default function Analytics({
 }: AnalyticsProps) {
   return (
     <>
+      {/* Vercel Analytics */}
+      <VercelAnalytics />
+      
+      {/* Vercel Speed Insights */}
+      <SpeedInsights />
+
       {/* Google Analytics 4 */}
       <GoogleAnalytics gaId={googleAnalyticsId} />
 

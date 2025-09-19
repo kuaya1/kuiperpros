@@ -28,4 +28,4 @@
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
- */let i=(0,t(59508).Z)("Shield",[["path",{d:"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10",key:"1irkt0"}]])}};var s=require("../../webpack-runtime.js");s.C(e);var t=e=>s(s.s=e),i=s.X(0,[638,371,230,674,732,467,479],()=>t(62645));module.exports=i})();
+ */let i=(0,t(59508).Z)("Shield",[["path",{d:"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10",key:"1irkt0"}]])}};var s=require("../../webpack-runtime.js");s.C(e);var t=e=>s(s.s=e),i=s.X(0,[638,947,230,674,732,467,479],()=>t(62645));module.exports=i})();
