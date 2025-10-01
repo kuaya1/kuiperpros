@@ -2,65 +2,117 @@
 
 import Link from 'next/link'
 import { Button } from '@/components/ui/Button'
-import { CheckCircle, Shield, Clock, ArrowRight, MapPin } from 'lucide-react'
+import { CheckCircle, Shield, Clock, ArrowRight, MapPin, Zap, Users } from 'lucide-react'
 import { motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
 
 export default function HeroSection() {
+  const [installCount, setInstallCount] = useState(2500)
+
+  useEffect(() => {
+    // Animated counter effect
+    const interval = setInterval(() => {
+      setInstallCount(prev => {
+        if (prev < 2536) return prev + 1
+        clearInterval(interval)
+        return prev
+      })
+    }, 50)
+    return () => clearInterval(interval)
+  }, [])
+
   return (
-    <section className="relative bg-gradient-to-br from-brand-50 to-white py-20 lg:py-32">
-      <div className="container">
+    <section className="relative bg-gradient-to-br from-brand-900 via-brand-800 to-accent-900 py-20 lg:py-32 overflow-hidden">
+      {/* Animated background pattern */}
+      <div className="absolute inset-0 bg-space-pattern opacity-20"></div>
+      
+      {/* Floating orbs */}
+      <div className="absolute top-20 left-10 w-72 h-72 bg-accent-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float"></div>
+      <div className="absolute top-40 right-10 w-72 h-72 bg-secondary-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float" style={{ animationDelay: '2s' }}></div>
+      <div className="absolute bottom-20 left-1/2 w-72 h-72 bg-brand-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float" style={{ animationDelay: '4s' }}></div>
+
+      <div className="container relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-              Certified Amazon Kuiper Installation
-              <span className="text-brand-600"> Professionals</span>
+            {/* Trust badge */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2 }}
+              className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6"
+            >
+              <Shield className="h-4 w-4 text-accent-400" />
+              <span className="text-sm font-semibold text-white">2,500+ Certified Installations</span>
+            </motion.div>
+
+            <h1 className="text-4xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight font-display">
+              Expert Amazon Kuiper Installation.
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-400 to-accent-600"> Connected in Hours, Not Days.</span>
             </h1>
-            <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-              Connect with certified Kuiper installers for expert satellite internet setup. 
-              Professional dish mounting, weatherproof installation, and 2-hour average completion time across all 50 states.
+            <p className="text-xl text-gray-200 mb-8 leading-relaxed">
+              Professional satellite internet setup with certified technicians. Same-week installation, 90-day warranty, and 2-hour average completion across all 50 states.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 mb-8">
+            <div className="flex flex-col sm:flex-row gap-4 mb-10">
               <Link href="/quote" className="w-full sm:w-auto">
                 <Button 
                   size="lg" 
-                  className="w-full group shadow-lg hover:shadow-xl transition-all duration-200"
+                  className="w-full group bg-accent-500 hover:bg-accent-600 text-brand-900 shadow-2xl shadow-accent-500/50 hover:shadow-accent-500/70 transition-all duration-300 border-0"
                 >
-                  <span className="flex items-center justify-center gap-2">
-                    Get Your Quote in 60 Seconds
+                  <span className="flex items-center justify-center gap-2 font-semibold">
+                    Get Free Quote
                     <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
                   </span>
                 </Button>
               </Link>
-            </div>
-            
-            <div className="text-center sm:text-left mb-8">
-              <Link 
-                href="/installation-guide" 
-                className="text-brand-600 hover:text-brand-700 font-medium inline-flex items-center gap-1 underline-offset-4 hover:underline transition-colors"
-              >
-                How does installation work?
-                <ArrowRight className="h-4 w-4" />
+              
+              <Link href="#coverage-map" className="w-full sm:w-auto">
+                <Button 
+                  size="lg"
+                  variant="outline"
+                  className="w-full bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20 hover:border-white/40 transition-all duration-300"
+                >
+                  <span className="flex items-center justify-center gap-2 font-semibold">
+                    <MapPin className="h-5 w-5" />
+                    See Coverage Map
+                  </span>
+                </Button>
               </Link>
             </div>
 
+            {/* Feature highlights */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div className="flex items-center space-x-2">
-                <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
-                <span className="text-sm font-medium text-gray-900">Certified Installers</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Shield className="h-5 w-5 text-green-500 flex-shrink-0" />
-                <span className="text-sm font-medium text-gray-900">Insured & Vetted</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Clock className="h-5 w-5 text-green-500 flex-shrink-0" />
-                <span className="text-sm font-medium text-gray-900">Same Week Service</span>
-              </div>
+              <motion.div 
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="flex items-center space-x-2 bg-white/5 backdrop-blur-sm rounded-lg px-4 py-3 border border-white/10"
+              >
+                <CheckCircle className="h-5 w-5 text-accent-400 flex-shrink-0" />
+                <span className="text-sm font-medium text-white">Certified Installers</span>
+              </motion.div>
+              <motion.div 
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+                className="flex items-center space-x-2 bg-white/5 backdrop-blur-sm rounded-lg px-4 py-3 border border-white/10"
+              >
+                <Shield className="h-5 w-5 text-accent-400 flex-shrink-0" />
+                <span className="text-sm font-medium text-white">Insured & Vetted</span>
+              </motion.div>
+              <motion.div 
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+                className="flex items-center space-x-2 bg-white/5 backdrop-blur-sm rounded-lg px-4 py-3 border border-white/10"
+              >
+                <Clock className="h-5 w-5 text-accent-400 flex-shrink-0" />
+                <span className="text-sm font-medium text-white">2-Hour Average</span>
+              </motion.div>
             </div>
           </motion.div>
 
@@ -70,24 +122,80 @@ export default function HeroSection() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="relative"
           >
-            <img
-              src="/api/placeholder/600/400"
-              alt="Professional technician installing Kuiper satellite dish on residential roof with clear blue sky background"
-              className="rounded-2xl shadow-2xl w-full"
-            />
-            <div className="absolute -bottom-6 -left-6 bg-white rounded-xl shadow-lg p-6 max-w-[200px]">
+            {/* Main image */}
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+              <img
+                src="/api/placeholder/700/500"
+                alt="Professional technician installing Amazon Kuiper satellite dish on modern residential roof with clear blue sky and advanced mounting equipment"
+                className="rounded-2xl w-full h-auto"
+              />
+              {/* Overlay gradient */}
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-900/40 to-transparent"></div>
+            </div>
+
+            {/* Floating stats cards */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.6 }}
+              className="absolute -bottom-6 -left-6 bg-white rounded-xl shadow-2xl p-6 max-w-[220px]"
+            >
               <div className="flex items-start space-x-3">
-                <div className="bg-brand-100 rounded-full p-2 flex-shrink-0">
-                  <Shield className="h-6 w-6 text-brand-600" />
+                <div className="bg-accent-100 rounded-full p-2 flex-shrink-0">
+                  <Users className="h-6 w-6 text-accent-600" />
                 </div>
                 <div>
-                  <p className="font-bold text-2xl text-gray-900">2,500+</p>
+                  <p className="font-bold text-3xl text-brand-900 tabular-nums">{installCount.toLocaleString()}+</p>
                   <p className="text-sm text-gray-600 leading-tight">Installations Completed</p>
                 </div>
               </div>
-            </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.8 }}
+              className="absolute -top-6 -right-6 bg-gradient-to-br from-accent-500 to-accent-600 rounded-xl shadow-2xl p-6 max-w-[200px]"
+            >
+              <div className="flex items-start space-x-3">
+                <div className="bg-white/20 backdrop-blur-sm rounded-full p-2 flex-shrink-0">
+                  <Zap className="h-6 w-6 text-white" />
+                </div>
+                <div>
+                  <p className="font-bold text-2xl text-white">2 Hours</p>
+                  <p className="text-sm text-accent-50 leading-tight">Average Install Time</p>
+                </div>
+              </div>
+            </motion.div>
           </motion.div>
         </div>
+
+        {/* Floating stats bar */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1 }}
+          className="mt-16 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6"
+        >
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="text-center">
+              <p className="text-3xl font-bold text-white mb-1">500+</p>
+              <p className="text-sm text-gray-300">Certified Technicians</p>
+            </div>
+            <div className="text-center">
+              <p className="text-3xl font-bold text-white mb-1">50</p>
+              <p className="text-sm text-gray-300">States Covered</p>
+            </div>
+            <div className="text-center">
+              <p className="text-3xl font-bold text-white mb-1">4.8★</p>
+              <p className="text-sm text-gray-300">Average Rating</p>
+            </div>
+            <div className="text-center">
+              <p className="text-3xl font-bold text-white mb-1">90 Days</p>
+              <p className="text-sm text-gray-300">Warranty Period</p>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   )

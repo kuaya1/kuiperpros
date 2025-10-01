@@ -8,6 +8,9 @@ import Testimonials from '@/components/homepage/Testimonials'
 import FAQ from '@/components/homepage/FAQ'
 import StructuredData from '@/components/seo/StructuredData'
 import InlineNewsletter from '@/components/lead-capture/InlineNewsletter'
+import CoverageChecker from '@/components/homepage/CoverageChecker'
+import LiveInstallationFeed from '@/components/homepage/LiveInstallationFeed'
+import TechnologyShowcase from '@/components/homepage/TechnologyShowcase'
 
 export default function HomePage() {
   return (
@@ -36,11 +39,14 @@ export default function HomePage() {
       <Navigation />
       <main id="main-content">
         <HeroSection />
+        <LiveInstallationFeed />
         <HowItWorks />
+        <TechnologyShowcase />
         <ServicesOverview />
+        <CoverageChecker />
         
         {/* Newsletter Signup */}
-        <section className="py-16 bg-gray-50">
+        <section className="py-16 bg-gray-50" id="newsletter">
           <div className="container">
             <InlineNewsletter 
               title="Get Notified When Kuiper Launches in Your Area"

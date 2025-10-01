@@ -97,16 +97,40 @@ module.exports = {
     extend: {
       colors: {
         brand: {
-          50: '#eff6ff',
-          100: '#dbeafe',
-          200: '#bfdbfe',
-          300: '#93c5fd',
-          400: '#60a5fa',
-          500: '#3b82f6',
-          600: '#2563eb',
-          700: '#1d4ed8',
-          800: '#1e40af',
-          900: '#1e3a8a',
+          50: '#e6f0ff',
+          100: '#cce1ff',
+          200: '#99c3ff',
+          300: '#66a5ff',
+          400: '#3387ff',
+          500: '#0069ff',
+          600: '#0054cc',
+          700: '#003f99',
+          800: '#002a66',
+          900: '#0a1128', // Deep Space Blue
+        },
+        accent: {
+          50: '#e6fbff',
+          100: '#ccf7ff',
+          200: '#99efff',
+          300: '#66e7ff',
+          400: '#33dfff',
+          500: '#00d9ff', // Vibrant Cyan
+          600: '#00adc9',
+          700: '#008296',
+          800: '#005663',
+          900: '#002b32',
+        },
+        secondary: {
+          50: '#fff3ed',
+          100: '#ffe7db',
+          200: '#ffcfb7',
+          300: '#ffb793',
+          400: '#ff9f6f',
+          500: '#ff6b35', // Warm Orange
+          600: '#cc562a',
+          700: '#99411f',
+          800: '#662b15',
+          900: '#33160a',
         },
         // New color schemes for different content types
         location: {
@@ -133,33 +157,10 @@ module.exports = {
           800: '#343fa1',
           900: '#2d3780',
         },
-        install: {
-          50: '#fdf9f2',
-          100: '#fbf2e3',
-          200: '#f6e2c3',
-          300: '#efcb94',
-          400: '#e7b064',
-          500: '#df953e',
-          600: '#cb7826',
-          700: '#a85b21',
-          800: '#874921',
-          900: '#6e3d1f',
-        },
-        compare: {
-          50: '#f2f7fd',
-          100: '#e4eefa',
-          200: '#c6ddf5',
-          300: '#97c3ec',
-          400: '#61a3e0',
-          500: '#3b83d3',
-          600: '#2868bd',
-          700: '#205399',
-          800: '#1d457d',
-          900: '#1b3b67',
-        },
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['Space Grotesk', 'Inter', 'system-ui', 'sans-serif'],
       },
       spacing: {
         '72': '18rem',
@@ -181,6 +182,41 @@ module.exports = {
       },
       borderRadius: {
         '4xl': '2rem',
+      },
+      animation: {
+        'fade-in': 'fadeIn 0.5s ease-in',
+        'slide-up': 'slideUp 0.5s ease-out',
+        'slide-down': 'slideDown 0.5s ease-out',
+        'scale-in': 'scaleIn 0.3s ease-out',
+        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'float': 'float 6s ease-in-out infinite',
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        slideUp: {
+          '0%': { transform: 'translateY(20px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+        slideDown: {
+          '0%': { transform: 'translateY(-20px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+        scaleIn: {
+          '0%': { transform: 'scale(0.9)', opacity: '0' },
+          '100%': { transform: 'scale(1)', opacity: '1' },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-20px)' },
+        },
+      },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'space-pattern': "url('data:image/svg+xml,%3Csvg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\" fill-rule=\"evenodd\"%3E%3Cg fill=\"%239C92AC\" fill-opacity=\"0.05\"%3E%3Cpath d=\"M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')",
       },
     },
   },
