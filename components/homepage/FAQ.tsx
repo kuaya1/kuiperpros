@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Plus, Minus } from 'lucide-react'
+import { ChevronDown } from 'lucide-react'
 import StructuredData from '@/components/seo/StructuredData'
 
 const faqs = [
@@ -61,34 +61,59 @@ export default function FAQ() {
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.3, delay: index * 0.05 }}
               viewport={{ once: true }}
-              className="bg-white rounded-lg shadow-sm"
+              className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow"
             >
               <button
-                className="w-full px-6 py-4 text-left flex justify-between items-center"
+                className="w-full px-6 py-5 text-left flex justify-between items-start gap-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 rounded-lg group"
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault()
+                    setOpenIndex(openIndex === index ? null : index)
+                  }
+                }}
+                aria-expanded={openIndex === index}
+                aria-controls={`faq-answer-${index}`}
               >
-                <span className="font-semibold text-gray-900">{faq.question}</span>
-                {openIndex === index ? (
-                  <Minus className="h-5 w-5 text-brand-600" />
-                ) : (
-                  <Plus className="h-5 w-5 text-brand-600" />
-                )}
+                <span className="font-semibold text-gray-900 text-left pr-4 leading-relaxed group-hover:text-brand-600 transition-colors">
+                  {faq.question}
+                </span>
+                <ChevronDown 
+                  className={`h-5 w-5 text-brand-600 flex-shrink-0 transition-transform duration-300 ${
+                    openIndex === index ? 'rotate-180' : ''
+                  }`}
+                  aria-hidden="true"
+                />
               </button>
               <AnimatePresence>
                 {openIndex === index && (
                   <motion.div
+                    id={`faq-answer-${index}`}
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: 'auto', opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3 }}
-                    className="px-6 pb-4"
+                    className="overflow-hidden"
                   >
-                    <p className="text-gray-600">{faq.answer}</p>
+                    <div className="px-6 pb-5">
+                      <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
+                    </div>
                   </motion.div>
                 )}
               </AnimatePresence>
             </motion.div>
           ))}
+        </div>
+
+        <div className="mt-12 text-center">
+          <p className="text-gray-600 mb-4">Still have questions?</p>
+          <a 
+            href="/quote" 
+            className="inline-flex items-center gap-2 text-brand-600 hover:text-brand-700 font-semibold transition-colors underline-offset-4 hover:underline"
+          >
+            Contact us for personalized answers
+            <ChevronDown className="h-4 w-4 -rotate-90" />
+          </a>
         </div>
       </div>
     </section>

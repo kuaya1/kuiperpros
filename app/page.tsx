@@ -34,7 +34,7 @@ export default function HomePage() {
         }}
       />
       <Navigation />
-      <main>
+      <main id="main-content">
         <HeroSection />
         <HowItWorks />
         <ServicesOverview />
