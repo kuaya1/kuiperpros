@@ -82,50 +82,62 @@ export default function ExitIntentPopup() {
             {!isSubmitted ? (
               <>
                 <div className="text-center mb-6">
-                  <div className="bg-brand-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                    <Bell className="h-8 w-8 text-brand-600" />
+                  <div className="bg-gradient-to-br from-accent-500 to-accent-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 shadow-lg">
+                    <Bell className="h-8 w-8 text-white" />
                   </div>
-                  <h2 className="text-2xl font-bold text-gray-900 mb-2">
-                    Don't Miss Out!
+                  <h2 className="text-3xl font-bold text-gray-900 mb-2 font-display">
+                    Wait! Don't Miss Out
                   </h2>
-                  <p className="text-gray-600">
-                    Get notified the moment Kuiper launches in your area and secure early bird pricing.
+                  <p className="text-lg text-gray-600">
+                    Get notified when Kuiper launches in your area and secure <span className="font-bold text-secondary-600">20% early bird pricing</span>.
                   </p>
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-4">
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter your email address"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent"
-                    required
-                  />
+                  <div>
+                    <label htmlFor="exit-popup-email" className="sr-only">
+                      Email address
+                    </label>
+                    <input
+                      id="exit-popup-email"
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="Enter your email address"
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-accent-500 focus:border-accent-500 transition-all focus-visible:outline-none"
+                      required
+                    />
+                  </div>
                   
                   <button
                     type="submit"
-                    className="w-full bg-brand-600 text-white py-3 rounded-lg hover:bg-brand-700 transition-colors font-medium"
+                    className="w-full bg-gradient-to-r from-accent-500 to-accent-600 hover:from-accent-600 hover:to-accent-700 text-white py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
                   >
-                    Get Early Access
+                    Claim My 20% Discount
                   </button>
                 </form>
 
-                <div className="flex items-center space-x-2 mt-4 text-sm text-gray-500">
-                  <Zap className="h-4 w-4 text-green-500" />
-                  <span>Join 10,000+ people waiting for Kuiper</span>
+                <div className="flex items-center justify-center gap-2 mt-6 text-sm text-gray-500">
+                  <Zap className="h-4 w-4 text-location-500" />
+                  <span>Join 10,000+ people on the waitlist</span>
                 </div>
+                
+                <p className="text-xs text-gray-400 text-center mt-3">
+                  No spam, ever. Unsubscribe anytime.
+                </p>
               </>
             ) : (
-              <div className="text-center">
-                <div className="bg-green-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                  <Bell className="h-8 w-8 text-green-600" />
+              <div className="text-center py-4">
+                <div className="bg-location-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
+                  <svg className="h-10 w-10 text-location-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                  </svg>
                 </div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">
-                  You're All Set!
+                <h2 className="text-2xl font-bold text-gray-900 mb-2 font-display">
+                  You're On The List!
                 </h2>
                 <p className="text-gray-600">
-                  We'll notify you as soon as Kuiper becomes available in your area.
+                  Check your email for your exclusive 20% discount code.
                 </p>
               </div>
             )}

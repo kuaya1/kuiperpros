@@ -36,4 +36,4 @@
     <p><a href="${e.loginUrl}">Log In to Your Dashboard</a></p>
     <p>Welcome to the team!</p>
     <p>Best regards,<br>The KuiperPros Team</p>
-  `};async function n({to:e,subject:r,template:t,data:a}){try{let n=s[t](a),o={to:e,from:process.env.EMAIL_FROM,subject:r,html:n};return await i().send(o),{success:!0}}catch(e){throw console.error("Email send error:",e),e}}},9108:(e,r,t)=>{t.d(r,{_:()=>i});let a=require("@prisma/client"),i=global.prisma||new a.PrismaClient}};var r=require("../../../../../../webpack-runtime.js");r.C(e);var t=e=>r(r.s=e),a=r.X(0,[638,147,70,584],()=>t(73955));module.exports=a})();
+  `};async function n({to:e,subject:r,template:t,data:a}){try{let n=s[t](a),o={to:e,from:process.env.EMAIL_FROM,subject:r,html:n};return await i().send(o),{success:!0}}catch(e){throw console.error("Email send error:",e),e}}},9108:(e,r,t)=>{t.d(r,{_:()=>i});let a=require("@prisma/client"),i=global.prisma||new a.PrismaClient}};var r=require("../../../../../../webpack-runtime.js");r.C(e);var t=e=>r(r.s=e),a=r.X(0,[638,206,574,584],()=>t(73955));module.exports=a})();

@@ -11,6 +11,10 @@ import InlineNewsletter from '@/components/lead-capture/InlineNewsletter'
 import CoverageChecker from '@/components/homepage/CoverageChecker'
 import LiveInstallationFeed from '@/components/homepage/LiveInstallationFeed'
 import TechnologyShowcase from '@/components/homepage/TechnologyShowcase'
+import VideoTestimonials from '@/components/homepage/VideoTestimonials'
+import TechnicianProfiles from '@/components/homepage/TechnicianProfiles'
+import MobileStickyCTA from '@/components/lead-capture/MobileStickyCTA'
+import ExitIntentPopup from '@/components/lead-capture/ExitIntentPopup'
 
 export default function HomePage() {
   return (
@@ -44,6 +48,7 @@ export default function HomePage() {
         <TechnologyShowcase />
         <ServicesOverview />
         <CoverageChecker />
+        <TechnicianProfiles />
         
         {/* Newsletter Signup */}
         <section className="py-16 bg-gray-50" id="newsletter">
@@ -57,10 +62,15 @@ export default function HomePage() {
         </section>
         
         <ServiceMap />
+        <VideoTestimonials />
         <Testimonials />
         <FAQ />
       </main>
       <Footer />
+      
+      {/* Interactive Features */}
+      <MobileStickyCTA />
+      <ExitIntentPopup />
     </div>
   )
 }

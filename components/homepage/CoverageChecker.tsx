@@ -8,18 +8,38 @@ export default function CoverageChecker() {
   const [address, setAddress] = useState('')
   const [isChecking, setIsChecking] = useState(false)
   const [result, setResult] = useState<'available' | 'waitlist' | null>(null)
+  const [location, setLocation] = useState<{ city: string; state: string } | null>(null)
+  const [error, setError] = useState<string | null>(null)
 
   const handleCheck = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsChecking(true)
+    setError(null)
     
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500))
-    
-    // Random result for demo (in production, this would be real data)
-    const isAvailable = Math.random() > 0.3
-    setResult(isAvailable ? 'available' : 'waitlist')
-    setIsChecking(false)
+    try {
+      const response = await fetch('/api/coverage/check', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ address })
+      })
+      
+      const data = await response.json()
+      
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to check coverage')
+      }
+      
+      setResult(data.available ? 'available' : 'waitlist')
+      setLocation({
+        city: data.location.city,
+        state: data.location.state
+      })
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'An error occurred')
+      setResult(null)
+    } finally {
+      setIsChecking(false)
+    }
   }
 
   return (
@@ -90,7 +110,18 @@ export default function CoverageChecker() {
 
             {/* Results */}
             <AnimatePresence mode="wait">
-              {result === 'available' && (
+              {error && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  className="mt-8 bg-red-50 border-2 border-red-200 rounded-xl p-6"
+                >
+                  <p className="text-red-700">{error}</p>
+                </motion.div>
+              )}
+
+              {result === 'available' && location && (
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -103,7 +134,7 @@ export default function CoverageChecker() {
                     </div>
                     <div className="flex-1">
                       <h3 className="text-xl font-bold text-gray-900 mb-2">
-                        Great News! Kuiper is Available
+                        Great News! Kuiper is Available in {location.city}, {location.state}
                       </h3>
                       <p className="text-gray-700 mb-4">
                         Amazon Kuiper service is available at your address. Get professional installation scheduled today!
@@ -125,7 +156,7 @@ export default function CoverageChecker() {
                 </motion.div>
               )}
 
-              {result === 'waitlist' && (
+              {result === 'waitlist' && location && (
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -138,7 +169,7 @@ export default function CoverageChecker() {
                     </div>
                     <div className="flex-1">
                       <h3 className="text-xl font-bold text-gray-900 mb-2">
-                        Coming Soon to Your Area
+                        Coming Soon to {location.city}, {location.state}
                       </h3>
                       <p className="text-gray-700 mb-4">
                         Kuiper isn't available yet at your address, but we're expanding rapidly. Join the waitlist to be notified when service launches.

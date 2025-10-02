@@ -21,28 +21,74 @@ const mockInstallations: Installation[] = [
 
 export default function LiveInstallationFeed() {
   const [installations, setInstallations] = useState<Installation[]>(mockInstallations.slice(0, 3))
-  const [currentIndex, setCurrentIndex] = useState(3)
   const [totalToday, setTotalToday] = useState(127)
+  const [isConnected, setIsConnected] = useState(false)
 
   useEffect(() => {
-    // Simulate new installations appearing
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => {
-        const nextIndex = prev >= mockInstallations.length ? 0 : prev
-        const newInstallation = mockInstallations[nextIndex]
+    // Connect to Server-Sent Events for real-time updates
+    let eventSource: EventSource | null = null
+    
+    try {
+      eventSource = new EventSource('/api/live-feed')
+      
+      eventSource.onopen = () => {
+        setIsConnected(true)
+      }
+      
+      eventSource.onmessage = (event) => {
+        try {
+          const message = JSON.parse(event.data)
+          
+          if (message.type === 'installation' && message.data) {
+            const newInstallation: Installation = message.data
+            
+            setInstallations((current) => {
+              const updated = [newInstallation, ...current]
+              return updated.slice(0, 3) // Keep only 3 most recent
+            })
+            
+            setTotalToday((prev) => prev + 1)
+          }
+        } catch (error) {
+          console.error('Error parsing SSE message:', error)
+        }
+      }
+      
+      eventSource.onerror = () => {
+        setIsConnected(false)
+        eventSource?.close()
         
-        setInstallations((current) => {
-          const updated = [newInstallation, ...current]
-          return updated.slice(0, 3) // Keep only 3 most recent
-        })
+        // Fallback to polling if SSE fails
+        const fallbackInterval = setInterval(() => {
+          const newInstallation = mockInstallations[Math.floor(Math.random() * mockInstallations.length)]
+          setInstallations((current) => [
+            { ...newInstallation, id: `fallback-${Date.now()}` },
+            ...current
+          ].slice(0, 3))
+          setTotalToday((prev) => prev + 1)
+        }, 10000)
         
+        return () => clearInterval(fallbackInterval)
+      }
+    } catch (error) {
+      console.error('Error setting up SSE:', error)
+      
+      // Fallback to original simulation
+      const interval = setInterval(() => {
+        const newInstallation = mockInstallations[Math.floor(Math.random() * mockInstallations.length)]
+        setInstallations((current) => [
+          { ...newInstallation, id: `sim-${Date.now()}` },
+          ...current
+        ].slice(0, 3))
         setTotalToday((prev) => prev + 1)
-        
-        return nextIndex + 1
-      })
-    }, 8000) // New installation every 8 seconds
+      }, 8000)
+      
+      return () => clearInterval(interval)
+    }
 
-    return () => clearInterval(interval)
+    return () => {
+      eventSource?.close()
+    }
   }, [])
 
   return (
@@ -53,8 +99,8 @@ export default function LiveInstallationFeed() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-8">
             <div className="flex items-center gap-3">
               <div className="relative">
-                <div className="absolute inset-0 bg-location-500 rounded-full animate-ping opacity-75"></div>
-                <div className="relative bg-location-500 rounded-full p-2">
+                <div className={`absolute inset-0 rounded-full ${isConnected ? 'bg-location-500 animate-ping' : 'bg-gray-400'} opacity-75`}></div>
+                <div className={`relative rounded-full p-2 ${isConnected ? 'bg-location-500' : 'bg-gray-400'}`}>
                   <TrendingUp className="h-5 w-5 text-white" />
                 </div>
               </div>
@@ -62,7 +108,9 @@ export default function LiveInstallationFeed() {
                 <h3 className="text-2xl font-bold text-gray-900 font-display">
                   Live Installation Activity
                 </h3>
-                <p className="text-gray-600 text-sm">Real-time installs happening nationwide</p>
+                <p className="text-gray-600 text-sm">
+                  {isConnected ? 'Real-time installs happening nationwide' : 'Loading live data...'}
+                </p>
               </div>
             </div>
 
