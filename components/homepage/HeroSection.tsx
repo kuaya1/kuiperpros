@@ -7,13 +7,13 @@ import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 
 export default function HeroSection() {
-  const [installCount, setInstallCount] = useState(2500)
+  const [preRegCount, setPreRegCount] = useState(10000)
 
   useEffect(() => {
-    // Animated counter effect
+    // Animated counter effect showing pre-registrations
     const interval = setInterval(() => {
-      setInstallCount(prev => {
-        if (prev < 2536) return prev + 1
+      setPreRegCount(prev => {
+        if (prev < 10247) return prev + 1
         clearInterval(interval)
         return prev
       })
@@ -46,15 +46,15 @@ export default function HeroSection() {
               className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6"
             >
               <Shield className="h-4 w-4 text-accent-400" />
-              <span className="text-sm font-semibold text-white">2,500+ Certified Installations</span>
+              <span className="text-sm font-semibold text-white">Launching Late 2025 • Reserve Your Spot</span>
             </motion.div>
 
             <h1 className="text-4xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight font-display">
-              Expert Amazon Kuiper Installation.
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-400 to-accent-600"> Connected in Hours, Not Days.</span>
+              Be First in Line for Amazon Kuiper Installation.
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-400 to-accent-600"> Reserve Your Spot Today.</span>
             </h1>
             <p className="text-xl text-gray-200 mb-8 leading-relaxed">
-              Professional satellite internet setup with certified technicians. Same-week installation, 90-day warranty, and 2-hour average completion across all 50 states.
+              Amazon Kuiper satellite internet launches late 2025. Reserve professional installation now for early bird pricing starting at $299. No payment required until installation day.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 mb-10">
@@ -145,8 +145,8 @@ export default function HeroSection() {
                   <Users className="h-6 w-6 text-accent-600" />
                 </div>
                 <div>
-                  <p className="font-bold text-3xl text-brand-900 tabular-nums">{installCount.toLocaleString()}+</p>
-                  <p className="text-sm text-gray-600 leading-tight">Installations Completed</p>
+                  <p className="font-bold text-3xl text-brand-900 tabular-nums">{preRegCount.toLocaleString()}+</p>
+                  <p className="text-sm text-gray-600 leading-tight">People Pre-Registered</p>
                 </div>
               </div>
             </motion.div>
@@ -179,20 +179,20 @@ export default function HeroSection() {
         >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div className="text-center">
-              <p className="text-3xl font-bold text-white mb-1">500+</p>
-              <p className="text-sm text-gray-300">Certified Technicians</p>
+              <p className="text-3xl font-bold text-white mb-1">10,000+</p>
+              <p className="text-sm text-gray-300">Pre-Registrations</p>
             </div>
             <div className="text-center">
               <p className="text-3xl font-bold text-white mb-1">50</p>
-              <p className="text-sm text-gray-300">States Covered</p>
+              <p className="text-sm text-gray-300">States Ready</p>
             </div>
             <div className="text-center">
-              <p className="text-3xl font-bold text-white mb-1">4.8★</p>
-              <p className="text-sm text-gray-300">Average Rating</p>
+              <p className="text-3xl font-bold text-white mb-1">$299+</p>
+              <p className="text-sm text-gray-300">Early Bird Pricing</p>
             </div>
             <div className="text-center">
-              <p className="text-3xl font-bold text-white mb-1">90 Days</p>
-              <p className="text-sm text-gray-300">Warranty Period</p>
+              <p className="text-3xl font-bold text-white mb-1">Q4 2025</p>
+              <p className="text-sm text-gray-300">Expected Launch</p>
             </div>
           </div>
         </motion.div>

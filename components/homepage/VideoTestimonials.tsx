@@ -2,57 +2,53 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Play, X, Star, Quote } from 'lucide-react'
+import { Play, X, Rocket, Satellite, Zap } from 'lucide-react'
 
-interface VideoTestimonial {
+interface EducationalVideo {
   id: string
-  name: string
-  location: string
+  title: string
+  description: string
   thumbnail: string
   videoUrl: string
-  quote: string
-  rating: number
-  installationType: string
+  duration: string
+  category: string
 }
 
-const testimonials: VideoTestimonial[] = [
+const videos: EducationalVideo[] = [
   {
     id: '1',
-    name: 'Sarah Johnson',
-    location: 'Austin, TX',
-    thumbnail: '/testimonials/sarah-thumb.jpg',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // Replace with real videos
-    quote: 'The installation was incredibly smooth and professional. Fiber-like speeds in my rural home!',
-    rating: 5,
-    installationType: 'Residential',
+    title: 'What is Amazon Kuiper?',
+    description: 'Learn about Amazon\'s revolutionary satellite internet constellation launching in 2025',
+    thumbnail: '/videos/kuiper-intro-thumb.jpg',
+    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // Replace with real educational videos
+    duration: '3:45',
+    category: 'Introduction',
   },
   {
     id: '2',
-    name: 'Mike Chen',
-    location: 'Denver, CO',
-    thumbnail: '/testimonials/mike-thumb.jpg',
+    title: 'How Satellite Internet Works',
+    description: 'Discover the technology behind high-speed satellite internet and low-latency connections',
+    thumbnail: '/videos/tech-explainer-thumb.jpg',
     videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-    quote: 'Our business productivity skyrocketed with Kuiper. Best decision we made this year.',
-    rating: 5,
-    installationType: 'Commercial',
+    duration: '5:20',
+    category: 'Technology',
   },
   {
     id: '3',
-    name: 'Emily Rodriguez',
-    location: 'Phoenix, AZ',
-    thumbnail: '/testimonials/emily-thumb.jpg',
+    title: 'Installation Process Overview',
+    description: 'See what to expect when Kuiper launches - from dish installation to activation',
+    thumbnail: '/videos/installation-thumb.jpg',
     videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-    quote: 'From quote to installation in 48 hours. The technician was knowledgeable and courteous.',
-    rating: 5,
-    installationType: 'Residential',
+    duration: '4:15',
+    category: 'Installation',
   },
 ]
 
 export default function VideoTestimonials() {
-  const [selectedVideo, setSelectedVideo] = useState<VideoTestimonial | null>(null)
+  const [selectedVideo, setSelectedVideo] = useState<EducationalVideo | null>(null)
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-gradient-to-b from-white to-gray-50">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -60,38 +56,44 @@ export default function VideoTestimonials() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="inline-block bg-location-100 text-location-700 text-sm font-semibold px-4 py-2 rounded-full mb-4">
-            Customer Stories
+          <span className="inline-block bg-blue-100 text-blue-700 text-sm font-semibold px-4 py-2 rounded-full mb-4 flex items-center gap-2 w-fit mx-auto">
+            <Rocket className="h-4 w-4" />
+            Coming Q4 2025
           </span>
           <h2 className="text-3xl lg:text-5xl font-bold text-gray-900 mb-4 font-display">
-            See What Our Customers
+            Learn About
             <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 via-accent-600 to-secondary-600">
-              Have to Say
+              Amazon Kuiper
             </span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Real stories from real customers who made the switch to Kuiper
+            Educational videos about the future of satellite internet and what to expect when Kuiper launches
           </p>
         </motion.div>
 
         {/* Video Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
+          {videos.map((video, index) => (
             <motion.div
-              key={testimonial.id}
+              key={video.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
               className="group cursor-pointer"
-              onClick={() => setSelectedVideo(testimonial)}
+              onClick={() => setSelectedVideo(video)}
             >
               <div className="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 mb-4">
                 {/* Thumbnail placeholder */}
-                <div className="aspect-video bg-gradient-to-br from-gray-200 to-gray-300 relative">
+                <div className="aspect-video bg-gradient-to-br from-brand-100 via-accent-100 to-secondary-100 relative flex items-center justify-center">
+                  {/* Icon based on category */}
+                  {video.category === 'Introduction' && <Rocket className="h-16 w-16 text-brand-400 opacity-50" />}
+                  {video.category === 'Technology' && <Satellite className="h-16 w-16 text-accent-400 opacity-50" />}
+                  {video.category === 'Installation' && <Zap className="h-16 w-16 text-secondary-400 opacity-50" />}
+                  
                   {/* Play button overlay */}
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/40 transition-colors">
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/30 transition-colors">
                     <div className="bg-white rounded-full p-4 group-hover:scale-110 transition-transform shadow-xl">
                       <Play className="h-8 w-8 text-accent-600 ml-1" />
                     </div>
@@ -99,39 +101,65 @@ export default function VideoTestimonials() {
                   
                   {/* Duration badge */}
                   <div className="absolute bottom-4 right-4 bg-black/80 text-white text-sm px-3 py-1 rounded-full">
-                    2:15
+                    {video.duration}
                   </div>
                 </div>
 
-                {/* Rating stars */}
-                <div className="absolute top-4 left-4 flex gap-1">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 fill-secondary-500 text-secondary-500" />
-                  ))}
+                {/* Category badge */}
+                <div className="absolute top-4 left-4">
+                  <span className="bg-white/90 backdrop-blur-sm text-gray-900 text-xs font-bold px-3 py-1 rounded-full">
+                    {video.category}
+                  </span>
                 </div>
               </div>
 
-              {/* Testimonial info */}
+              {/* Video info */}
               <div className="space-y-2">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-xl font-bold text-gray-900">{testimonial.name}</h3>
-                  <span className="text-sm font-semibold text-accent-600 bg-accent-50 px-3 py-1 rounded-full">
-                    {testimonial.installationType}
-                  </span>
-                </div>
-                <p className="text-gray-600 flex items-center gap-2">
-                  <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-                  </svg>
-                  {testimonial.location}
+                <h3 className="text-xl font-bold text-gray-900 group-hover:text-brand-600 transition-colors">
+                  {video.title}
+                </h3>
+                <p className="text-gray-600 line-clamp-2">
+                  {video.description}
                 </p>
-                <div className="flex items-start gap-2 mt-3">
-                  <Quote className="h-5 w-5 text-brand-300 flex-shrink-0 mt-1" />
-                  <p className="text-gray-700 italic line-clamp-2">{testimonial.quote}</p>
-                </div>
               </div>
             </motion.div>
           ))}
+        </div>
+
+        {/* Features Grid */}
+        <div className="mt-16 pt-16 border-t border-gray-200">
+          <h3 className="text-2xl font-bold text-gray-900 text-center mb-8">
+            Why Pre-Register for KuiperPros Installation?
+          </h3>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="bg-gradient-to-br from-brand-100 to-brand-200 rounded-2xl p-6 w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <Rocket className="h-8 w-8 text-brand-600" />
+              </div>
+              <h4 className="text-lg font-bold text-gray-900 mb-2">Be First in Line</h4>
+              <p className="text-gray-600">
+                Lock in your installation spot and early bird pricing before the official launch
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="bg-gradient-to-br from-accent-100 to-accent-200 rounded-2xl p-6 w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <Satellite className="h-8 w-8 text-accent-600" />
+              </div>
+              <h4 className="text-lg font-bold text-gray-900 mb-2">Certified Professionals</h4>
+              <p className="text-gray-600">
+                Licensed technicians trained specifically for Amazon Kuiper installations
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="bg-gradient-to-br from-secondary-100 to-secondary-200 rounded-2xl p-6 w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <Zap className="h-8 w-8 text-secondary-600" />
+              </div>
+              <h4 className="text-lg font-bold text-gray-900 mb-2">No Risk Reservation</h4>
+              <p className="text-gray-600">
+                No payment required until installation day. Cancel anytime for full refund
+              </p>
+            </div>
+          </div>
         </div>
 
         {/* CTA */}
@@ -141,15 +169,18 @@ export default function VideoTestimonials() {
           viewport={{ once: true }}
           className="text-center mt-12"
         >
-          <p className="text-gray-600 mb-4">
-            Join thousands of satisfied customers
+          <p className="text-gray-600 mb-4 text-lg">
+            Join 10,000+ people waiting for Amazon Kuiper
           </p>
           <a
             href="/quote"
             className="inline-flex items-center gap-2 bg-gradient-to-r from-accent-500 to-accent-600 hover:from-accent-600 hover:to-accent-700 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
           >
-            Get Your Free Quote
+            Reserve Your Installation Spot
           </a>
+          <p className="text-sm text-gray-500 mt-3">
+            No payment required • Cancel anytime • Launch expected Q4 2025
+          </p>
         </motion.div>
       </div>
 
@@ -187,7 +218,7 @@ export default function VideoTestimonials() {
                 <div className="aspect-video bg-black">
                   <iframe
                     src={selectedVideo.videoUrl}
-                    title={`${selectedVideo.name} testimonial`}
+                    title={selectedVideo.title}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                     className="w-full h-full"
@@ -198,16 +229,13 @@ export default function VideoTestimonials() {
                 <div className="p-6">
                   <div className="flex items-start justify-between mb-3">
                     <div>
-                      <h3 className="text-2xl font-bold text-gray-900">{selectedVideo.name}</h3>
-                      <p className="text-gray-600">{selectedVideo.location}</p>
-                    </div>
-                    <div className="flex gap-1">
-                      {[...Array(selectedVideo.rating)].map((_, i) => (
-                        <Star key={i} className="h-5 w-5 fill-secondary-500 text-secondary-500" />
-                      ))}
+                      <span className="text-sm font-semibold text-accent-600 bg-accent-50 px-3 py-1 rounded-full">
+                        {selectedVideo.category}
+                      </span>
+                      <h3 className="text-2xl font-bold text-gray-900 mt-2">{selectedVideo.title}</h3>
                     </div>
                   </div>
-                  <p className="text-gray-700 italic">"{selectedVideo.quote}"</p>
+                  <p className="text-gray-700">{selectedVideo.description}</p>
                 </div>
               </div>
             </motion.div>
