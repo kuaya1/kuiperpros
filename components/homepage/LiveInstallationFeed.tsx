@@ -225,7 +225,7 @@ export default function LiveInstallationFeed() {
               transition={{ delay: 0.3 }}
               className="bg-white rounded-xl p-4 shadow-md text-center"
             >
-              <p className="text-3xl font-bold text-blue-600 mb-1">Q4 2025</p>
+              <p className="text-3xl font-bold text-blue-600 mb-1">Q1 2026</p>
               <p className="text-sm text-gray-600">Expected Launch</p>
             </motion.div>
           </div>
@@ -233,7 +233,7 @@ export default function LiveInstallationFeed() {
           {/* Disclaimer */}
           <div className="mt-8 bg-blue-50 border border-blue-200 rounded-xl p-4">
             <p className="text-xs text-gray-700 text-center">
-              <span className="font-semibold">Note:</span> This feed shows live pre-registration activity. Amazon Kuiper service expected to launch Q4 2025. Pre-registration does not guarantee service availability. No payment required until installation is scheduled.
+              <span className="font-semibold">Note:</span> This feed shows live pre-registration activity. Amazon Kuiper service expected to launch Q1 2026. Pre-registration does not guarantee service availability. No payment required until installation is scheduled.
             </p>
           </div>
         </div>

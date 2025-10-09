@@ -18,7 +18,7 @@ const videos: EducationalVideo[] = [
   {
     id: '1',
     title: 'What is Amazon Kuiper?',
-    description: 'Learn about Amazon\'s revolutionary satellite internet constellation launching in 2025',
+    description: 'Learn about Amazon\'s revolutionary satellite internet constellation launching in Q1 2026',
     thumbnail: '/videos/kuiper-intro-thumb.jpg',
     videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // Replace with real educational videos
     duration: '3:45',
@@ -58,7 +58,7 @@ export default function VideoTestimonials() {
         >
           <span className="inline-block bg-blue-100 text-blue-700 text-sm font-semibold px-4 py-2 rounded-full mb-4 flex items-center gap-2 w-fit mx-auto">
             <Rocket className="h-4 w-4" />
-            Coming Q4 2025
+            Coming Q1 2026
           </span>
           <h2 className="text-3xl lg:text-5xl font-bold text-gray-900 mb-4 font-display">
             Learn About
@@ -179,7 +179,7 @@ export default function VideoTestimonials() {
             Reserve Your Installation Spot
           </a>
           <p className="text-sm text-gray-500 mt-3">
-            No payment required • Cancel anytime • Launch expected Q4 2025
+            No payment required • Cancel anytime • Launch expected Q1 2026
           </p>
         </motion.div>
       </div>

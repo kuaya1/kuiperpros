@@ -40,10 +40,10 @@ export default function MobileStickyCTA() {
             <div className="container flex items-center justify-between gap-4 py-4 px-4">
               <div className="flex-1">
                 <p className="text-white font-bold text-sm mb-1">
-                  Ready for High-Speed Internet?
+                  Starlink Installation Available Now
                 </p>
                 <p className="text-accent-100 text-xs">
-                  Get your free installation quote in 60 seconds
+                  Professional installation in under 2 hours
                 </p>
               </div>
               

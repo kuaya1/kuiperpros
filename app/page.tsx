@@ -15,6 +15,7 @@ import VideoTestimonials from '@/components/homepage/VideoTestimonials'
 import TechnicianProfiles from '@/components/homepage/TechnicianProfiles'
 import MobileStickyCTA from '@/components/lead-capture/MobileStickyCTA'
 import ExitIntentPopup from '@/components/lead-capture/ExitIntentPopup'
+import KuiperWaitlist from '@/components/homepage/KuiperWaitlist'
 
 export default function HomePage() {
   return (
@@ -64,6 +65,7 @@ export default function HomePage() {
         <ServiceMap />
         <VideoTestimonials />
         <Testimonials />
+        <KuiperWaitlist />
         <FAQ />
       </main>
       <Footer />

@@ -101,6 +101,13 @@ export default function Footer() {
             </Link>
           </div>
         </div>
+
+        {/* Amazon Trademark Disclaimer */}
+        <div className="border-t border-gray-800 mt-6 pt-6">
+          <p className="text-gray-400 text-xs leading-relaxed max-w-4xl mx-auto text-center">
+            <span className="font-semibold text-gray-300">Disclaimer:</span> KuiperPros is an independent satellite installation service provider. We are not affiliated with, endorsed by, or officially connected with Amazon, Amazon.com, Inc., or Project Kuiper in any way. Amazon, Kuiper, and Project Kuiper are trademarks of Amazon.com, Inc. or its affiliates. Kuiper service availability and launch dates are determined by Amazon and are subject to change. We provide professional installation services for various satellite internet systems including Starlink (available now) and will offer installation services for Amazon Kuiper when the service becomes available to consumers.
+          </p>
+        </div>
       </div>
     </footer>
   )

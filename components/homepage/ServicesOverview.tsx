@@ -7,26 +7,43 @@ import Link from 'next/link'
 
 const services = [
   {
-    id: 'residential',
+    id: 'starlink',
     icon: Home,
-    title: 'Residential Installation',
+    title: 'Starlink Installation - Available Now',
     price: 'Starting at $299',
-    description: 'Professional installation for homes with expert dish mounting and weatherproofing.',
+    description: 'Professional Starlink satellite installation with expert mounting and same-day service available.',
     features: [
-      'Roof & ground mounting',
-      '2-hour average install time',
-      'Weatherproof sealing',
+      'Roof, ground, or wall mounting',
+      'Under 2-hour installation',
+      'Professional cable management',
       '90-day workmanship warranty'
     ],
-    bestFor: 'Single-family homes and small properties with clear sky access',
-    color: 'blue'
+    bestFor: 'Residential and small business Starlink customers needing professional installation',
+    color: 'blue',
+    availability: 'Available Now - Book Today'
+  },
+  {
+    id: 'residential',
+    icon: Building,
+    title: 'Kuiper Residential Installation',
+    price: 'Starting at $299',
+    description: 'Professional Amazon Kuiper installation for homes - launching Q1 2026.',
+    features: [
+      'Roof & ground mounting options',
+      'Weatherproof sealing included',
+      'Equipment positioning optimization',
+      '90-day workmanship warranty'
+    ],
+    bestFor: 'Homeowners preparing for Amazon Kuiper launch in Q1 2026',
+    color: 'purple',
+    availability: 'Pre-Order for Q1 2026 Launch'
   },
   {
     id: 'commercial',
     icon: Building,
     title: 'Commercial Installation',
     price: 'Starting at $499',
-    description: 'Enterprise-grade installations for businesses requiring reliable connectivity.',
+    description: 'Enterprise-grade installations for businesses. Currently serving Starlink clients, expanding to Kuiper upon launch.',
     features: [
       'Multi-unit setup capability',
       'Network integration support',
@@ -34,33 +51,35 @@ const services = [
       'Priority technical support'
     ],
     bestFor: 'Offices, retail locations, and multi-tenant buildings',
-    color: 'purple'
+    color: 'green',
+    availability: 'Starlink Now, Kuiper Q1 2026'
   },
   {
     id: 'maintenance',
     icon: Wrench,
     title: 'Maintenance & Repair',
     price: 'Starting at $199',
-    description: 'Keep your system running smoothly with expert maintenance and quick repairs.',
+    description: 'Expert maintenance and repairs for Starlink and other satellite internet systems.',
     features: [
       'System diagnostics & troubleshooting',
       'Dish realignment service',
       'Component replacement',
       'Performance optimization'
     ],
-    bestFor: 'Existing installations needing service or upgrades',
-    color: 'green'
+    bestFor: 'Existing Starlink installations needing service or upgrades',
+    color: 'green',
+    availability: 'Available Now'
   },
 ]
 
 const benefits = [
-  { icon: Shield, text: 'All technicians are insured and certified' },
-  { icon: Clock, text: 'Same-week installation available' },
+  { icon: Shield, text: 'Experienced with Starlink & satellite systems' },
+  { icon: Clock, text: 'Same-day or next-day Starlink installation' },
   { icon: DollarSign, text: 'Transparent, upfront pricing' },
 ]
 
 export default function ServicesOverview() {
-  const [activeTab, setActiveTab] = useState('residential')
+  const [activeTab, setActiveTab] = useState('starlink')
   const activeService = services.find(s => s.id === activeTab) || services[0]
 
   const getColorClasses = (color: string) => {
@@ -72,15 +91,22 @@ export default function ServicesOverview() {
     return colors[color as keyof typeof colors] || colors.blue
   }
 
+  const getAvailabilityBadgeClasses = (availability: string) => {
+    if (availability.includes('Available Now')) {
+      return 'bg-green-100 text-green-700 border-green-300'
+    }
+    return 'bg-orange-100 text-orange-700 border-orange-300'
+  }
+
   return (
     <section id="services" className="py-20 bg-white">
       <div className="container">
         <div className="text-center mb-12">
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-            Professional Installation Services
+            Professional Satellite Installation Services
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            From residential to commercial, we handle all types of Kuiper satellite installations
+            Starlink installations available now. Preparing for Amazon Kuiper launch Q1 2026.
           </p>
         </div>
 
@@ -118,14 +144,21 @@ export default function ServicesOverview() {
               </div>
               <div className="flex-1">
                 <div className="flex items-start justify-between mb-2">
-                  <h3 className="text-2xl font-bold text-gray-900">
-                    {activeService.title}
-                  </h3>
+                  <div>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-1">
+                      {activeService.title}
+                    </h3>
+                    {activeService.availability && (
+                      <span className={`inline-block text-xs font-semibold px-3 py-1 rounded-full border ${getAvailabilityBadgeClasses(activeService.availability)}`}>
+                        {activeService.availability}
+                      </span>
+                    )}
+                  </div>
                   <span className="text-2xl font-bold text-brand-600">
                     {activeService.price}
                   </span>
                 </div>
-                <p className="text-gray-600 text-lg">
+                <p className="text-gray-600 text-lg mt-2">
                   {activeService.description}
                 </p>
               </div>
@@ -174,9 +207,16 @@ export default function ServicesOverview() {
                 <div className={`rounded-full w-12 h-12 flex items-center justify-center ${getColorClasses(service.color)}`}>
                   <service.icon className="h-6 w-6" />
                 </div>
-                <span className="text-lg font-bold text-brand-600">
-                  {service.price}
-                </span>
+                <div className="flex flex-col items-end gap-1">
+                  {service.availability && (
+                    <span className={`text-xs font-semibold px-2 py-1 rounded-full border ${getAvailabilityBadgeClasses(service.availability)}`}>
+                      {service.availability}
+                    </span>
+                  )}
+                  <span className="text-lg font-bold text-brand-600">
+                    {service.price}
+                  </span>
+                </div>
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">
                 {service.title}

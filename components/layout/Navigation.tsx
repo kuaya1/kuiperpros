@@ -98,7 +98,7 @@ export default function Navigation() {
                 For Technicians
               </Link>
               <Link href="/quote">
-                <Button className="shadow-md hover:shadow-lg transition-shadow">Get Free Quote</Button>
+                <Button className="shadow-md hover:shadow-lg transition-shadow">Get Installation Quote</Button>
               </Link>
             </div>
 
@@ -175,7 +175,7 @@ export default function Navigation() {
                   For Technicians
                 </Link>
                 <Link href="/quote" className="mt-2" onClick={() => setIsMobileMenuOpen(false)}>
-                  <Button className="w-full">Get Free Quote</Button>
+                  <Button className="w-full">Get Installation Quote</Button>
                 </Link>
               </div>
             </div>

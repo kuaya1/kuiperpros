@@ -7,28 +7,40 @@ import StructuredData from '@/components/seo/StructuredData'
 
 const faqs = [
   {
+    question: 'Is Amazon Kuiper available now?',
+    answer: 'Amazon Kuiper is expected to launch in Q1 2026. Currently, we offer professional Starlink satellite internet installation for customers who need satellite internet today. We\'re preparing our technicians and processes to be ready for Kuiper installations as soon as the service launches.',
+  },
+  {
+    question: 'Can you install Starlink right now?',
+    answer: 'Yes! We provide professional Starlink installation services available today. Most installations are completed in under 2 hours with same-day or next-day availability in major metro areas. Our experienced technicians handle roof mounting, weatherproofing, and system optimization to ensure optimal performance.',
+  },
+  {
+    question: 'Will Kuiper installation be the same as Starlink?',
+    answer: 'While both are satellite internet systems with similar installation requirements (dish mounting, cable routing, weatherproofing), Amazon Kuiper may have specific equipment and positioning needs. Our team is actively monitoring Kuiper\'s technical specifications to ensure we\'re ready to provide expert installation when it launches.',
+  },
+  {
     question: 'How much does Amazon Kuiper professional installation cost?',
-    answer: 'Kuiper installation costs typically range from $199-$599 depending on installation complexity. Standard residential installations average $299, including site survey, dish mounting, cable routing, and system activation. Commercial installations may cost more due to additional requirements.',
+    answer: 'Kuiper installation is expected to cost from $199-$599 depending on complexity. Standard residential installations are estimated at $299, including site survey, dish mounting, cable routing, and system activation. Commercial installations may cost more. Starlink installations are currently available starting at $299.',
   },
   {
-    question: 'How long does Kuiper satellite installation take?',
-    answer: 'Most Kuiper installations are completed within 2 hours for standard residential setups. This includes: site survey (15-30 minutes), dish mounting (45-60 minutes), cable routing (20-30 minutes), and system activation (15-20 minutes). Complex installations or challenging roof conditions may take longer.',
+    question: 'How long does satellite installation take?',
+    answer: 'Most satellite installations (Starlink currently, Kuiper when available) are completed within 2 hours for standard residential setups. This includes: site survey (15-30 minutes), dish mounting (45-60 minutes), cable routing (20-30 minutes), and system activation (15-20 minutes). Complex installations may take longer.',
   },
   {
-    question: 'Are your Kuiper installers certified and insured?',
-    answer: 'Yes, all KuiperPros technicians are certified satellite installation specialists, fully insured, and have passed comprehensive background checks. Our installers receive specialized training on Kuiper equipment and installation best practices.',
+    question: 'Are your installers certified and insured?',
+    answer: 'Yes, all KuiperPros technicians are experienced satellite installation specialists, fully insured, and have passed comprehensive background checks. Our team has years of experience with satellite systems including Starlink, Dish Network, and DirecTV, and we\'re preparing for Amazon Kuiper certification programs.',
   },
   {
-    question: 'Do I need professional Kuiper installation or can I install it myself?',
-    answer: 'While Amazon may offer DIY kits, professional installation ensures optimal performance and safety. Our certified technicians have specialized tools for proper dish alignment, weatherproof sealing, and signal optimization that are difficult to achieve with self-installation.',
+    question: 'Do I need professional installation or can I install it myself?',
+    answer: 'While DIY kits may be available, professional installation ensures optimal performance and safety. Our certified technicians have specialized tools for proper dish alignment, weatherproof sealing, and signal optimization that are difficult to achieve with self-installation. We also provide a 90-day workmanship warranty.',
   },
   {
-    question: 'What warranty do you provide on Kuiper installations?',
-    answer: 'All KuiperPros installations include a 90-day workmanship warranty covering mounting, weatherproofing, and system configuration. We also offer extended warranty options for additional peace of mind.',
+    question: 'What warranty do you provide on installations?',
+    answer: 'All KuiperPros installations include a 90-day workmanship warranty covering mounting, weatherproofing, and system configuration. This applies to both Starlink installations (available now) and Kuiper installations (when service launches). We also offer extended warranty options.',
   },
   {
-    question: 'Can you install Kuiper on any type of roof or property?',
-    answer: 'Our certified installers can mount Kuiper dishes on most residential and commercial properties using roof mounts, wall mounts, or ground pole installations. We assess each site to determine the optimal mounting solution for maximum signal strength.',
+    question: 'Can you install on any type of roof or property?',
+    answer: 'Our certified installers can mount satellite dishes on most residential and commercial properties using roof mounts, wall mounts, or ground pole installations. We assess each site to determine the optimal mounting solution for maximum signal strength and durability.',
   },
 ]
 
