@@ -168,8 +168,8 @@ export default function HeroSection() {
               <p className="text-sm text-gray-300">Years Experience</p>
             </div>
             <div className="text-center">
-              <p className="text-3xl font-bold text-white mb-1">500+</p>
-              <p className="text-sm text-gray-300">Experienced Technicians</p>
+              <p className="text-3xl font-bold text-white mb-1">50 States</p>
+              <p className="text-sm text-gray-300">Nationwide Coverage</p>
             </div>
             <div className="text-center">
               <p className="text-3xl font-bold text-white mb-1">Available</p>
