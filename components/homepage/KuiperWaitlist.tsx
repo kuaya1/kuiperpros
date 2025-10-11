@@ -33,6 +33,9 @@ export default function KuiperWaitlist() {
   }
 
   if (isSubmitted) {
+    // Simulate waitlist position (would come from actual backend in production)
+    const waitlistPosition = Math.floor(Math.random() * 500) + 200; // Random number between 200-700
+    
     return (
       <section id="kuiper-waitlist" className="py-20 bg-gradient-to-br from-brand-900 via-brand-800 to-purple-900 relative overflow-hidden">
         {/* Animated Background Elements */}
@@ -46,24 +49,73 @@ export default function KuiperWaitlist() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="max-w-2xl mx-auto text-center"
+            className="max-w-3xl mx-auto text-center"
           >
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-12 border border-white/20">
-              <div className="bg-green-500 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
-                <CheckCircle className="h-12 w-12 text-white" />
+              <div className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-6 shadow-2xl shadow-green-500/50">
+                <CheckCircle className="h-14 w-14 text-white" />
               </div>
-              <h3 className="text-3xl font-bold text-white mb-4">
-                You're on the List!
+              <h3 className="text-4xl font-bold text-white mb-4">
+                🎉 You're In!
               </h3>
-              <p className="text-xl text-white/90 mb-6">
-                We'll notify you as soon as Amazon Kuiper launches in Q1 2026
+              <p className="text-2xl font-bold text-accent-300 mb-2">
+                You're #{waitlistPosition} in line
               </p>
+              <p className="text-lg text-white/80 mb-8">
+                for {formData.propertyType === 'residential' ? 'residential' : formData.propertyType === 'commercial' ? 'commercial' : 'rural'} installation in ZIP {formData.zip}
+              </p>
+
+              {/* What Happens Next */}
+              <div className="bg-white rounded-xl p-6 mb-6 text-left">
+                <h4 className="font-bold text-gray-900 text-xl mb-4 text-center">What Happens Next:</h4>
+                <div className="space-y-4">
+                  <div className="flex items-start gap-3">
+                    <div className="flex-shrink-0 w-8 h-8 bg-brand-100 text-brand-600 rounded-full flex items-center justify-center font-bold">1</div>
+                    <div>
+                      <p className="font-semibold text-gray-900">We'll email you in early Q1 2026</p>
+                      <p className="text-sm text-gray-600">As soon as Kuiper is available in your area</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="flex-shrink-0 w-8 h-8 bg-brand-100 text-brand-600 rounded-full flex items-center justify-center font-bold">2</div>
+                    <div>
+                      <p className="font-semibold text-gray-900">Choose your installation date</p>
+                      <p className="text-sm text-gray-600">Priority scheduling for pre-registered customers</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="flex-shrink-0 w-8 h-8 bg-brand-100 text-brand-600 rounded-full flex items-center justify-center font-bold">3</div>
+                    <div>
+                      <p className="font-semibold text-gray-900">Get connected in under 2 hours</p>
+                      <p className="text-sm text-gray-600">Professional installation, lifetime support</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Referral Opportunity */}
+              <div className="bg-[#ff9900]/20 border-2 border-[#ff9900]/40 rounded-xl p-6 mb-6">
+                <h4 className="font-bold text-white text-lg mb-2">Want priority access?</h4>
+                <p className="text-white/90 text-sm mb-4">
+                  Refer 3 friends and move up <span className="font-bold text-accent-300">50 spots</span> in line!
+                </p>
+                <div className="flex gap-3">
+                  <button className="flex-1 bg-white text-brand-900 py-2 px-4 rounded-lg hover:bg-gray-100 transition-all font-semibold text-sm">
+                    Share on Twitter
+                  </button>
+                  <button className="flex-1 bg-white text-brand-900 py-2 px-4 rounded-lg hover:bg-gray-100 transition-all font-semibold text-sm">
+                    Copy Referral Link
+                  </button>
+                </div>
+              </div>
+
+              {/* Starlink Alternative */}
               <div className="bg-white/10 border border-white/20 rounded-xl p-6 mb-6">
                 <p className="text-white font-semibold mb-2">
                   Meanwhile, Starlink is Available Now
                 </p>
                 <p className="text-white/80 text-sm mb-4">
-                  Get satellite internet today while you wait for Kuiper. Professional installation in under 2 hours.
+                  Get satellite internet today while you wait for Kuiper. Same professional installation service.
                 </p>
                 <a href="/quote">
                   <button className="w-full bg-white text-brand-900 py-3 px-6 rounded-lg hover:bg-gray-100 transition-all font-semibold">
@@ -71,8 +123,9 @@ export default function KuiperWaitlist() {
                   </button>
                 </a>
               </div>
+
               <p className="text-sm text-white/70">
-                Confirmation email sent to <span className="font-semibold">{formData.email}</span>
+                Confirmation email sent to <span className="font-semibold text-white">{formData.email}</span>
               </p>
             </div>
           </motion.div>
@@ -133,9 +186,26 @@ export default function KuiperWaitlist() {
               viewport={{ once: true }}
               className="bg-white rounded-2xl p-8 shadow-2xl"
             >
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">
-                Reserve Your Installation Spot
-              </h3>
+              {/* Value Proposition - Above Form */}
+              <div className="mb-6 pb-6 border-b border-gray-200">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                  Reserve Your Priority Installation Slot
+                </h3>
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2 text-sm text-gray-700">
+                    <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0" />
+                    <span>Be notified the moment Kuiper launches</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-gray-700">
+                    <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0" />
+                    <span>Lock in pre-launch installation pricing</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-gray-700">
+                    <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0" />
+                    <span>Skip the general availability waitlist</span>
+                  </div>
+                </div>
+              </div>
               
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
@@ -185,6 +255,7 @@ export default function KuiperWaitlist() {
                       name="zip"
                       required
                       pattern="[0-9]{5}"
+                      inputMode="numeric"
                       value={formData.zip}
                       onChange={handleChange}
                       className="w-full pl-11 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-all"
@@ -217,14 +288,14 @@ export default function KuiperWaitlist() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-brand-600 text-white py-4 px-6 rounded-lg hover:bg-brand-700 transition-all font-semibold text-lg shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  className="w-full bg-gradient-to-r from-brand-600 to-accent-500 text-white py-4 px-6 rounded-lg hover:shadow-xl transition-all font-semibold text-lg shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
                   {isSubmitting ? (
                     <>Processing...</>
                   ) : (
                     <>
                       <Sparkles className="h-5 w-5" />
-                      Join the Kuiper Waitlist
+                      Secure My Installation Spot
                     </>
                   )}
                 </button>

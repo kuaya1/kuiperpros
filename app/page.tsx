@@ -1,6 +1,12 @@
 import Navigation from '@/components/layout/Navigation'
 import Footer from '@/components/layout/Footer'
 import HeroSection from '@/components/homepage/HeroSection'
+import KuiperEducationAccordion from '@/components/homepage/KuiperEducationAccordion'
+import TrustHub from '@/components/homepage/TrustHub'
+import LaunchCountdown from '@/components/homepage/LaunchCountdown'
+import LaunchRoadmap from '@/components/homepage/LaunchRoadmap'
+import LaunchStatusTracker from '@/components/homepage/LaunchStatusTracker'
+import EarlyAdopterBenefits from '@/components/homepage/EarlyAdopterBenefits'
 import HowItWorks from '@/components/homepage/HowItWorks'
 import ServicesOverview from '@/components/homepage/ServicesOverview'
 import ServiceMap from '@/components/homepage/ServiceMap'
@@ -43,10 +49,35 @@ export default function HomePage() {
       <Navigation />
       <main id="main-content">
         <HeroSection />
+        
+        {/* Launch Countdown - Immediate urgency display */}
+        <section className="py-12 bg-gradient-to-br from-white to-gray-50">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <LaunchCountdown variant="full" showCTA={true} />
+          </div>
+        </section>
+        
+        {/* Educational Accordion - Section #2 for front-loaded learning */}
+        <KuiperEducationAccordion />
+        
+        {/* Trust Hub - Section #3 for credibility before conversion */}
+        <TrustHub />
+        
+        {/* Early Adopter Benefits - Section #4 for urgency and tiered access */}
+        <EarlyAdopterBenefits />
+        
+        {/* Launch Roadmap - Visual timeline */}
+        <LaunchRoadmap />
+        
         <HowItWorks />
         <TechnologyShowcase />
         <ServicesOverview />
-        <CoverageChecker />
+        
+        {/* Coverage Checker */}
+        <section id="coverage-checker">
+          <CoverageChecker />
+        </section>
+        
         <TechnicianProfiles />
         
         {/* Newsletter Signup */}
@@ -64,7 +95,11 @@ export default function HomePage() {
         <VideoTestimonials />
         <Testimonials />
         <KuiperWaitlist />
-        <FAQ />
+        
+        {/* FAQ Section with ID */}
+        <section id="faq">
+          <FAQ />
+        </section>
       </main>
       <Footer />
       

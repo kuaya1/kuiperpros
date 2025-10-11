@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
-import { Menu, X, Satellite, ChevronDown } from 'lucide-react'
+import { Menu, X, Satellite, ChevronDown, Star } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 
 export default function Navigation() {
@@ -26,14 +26,77 @@ export default function Navigation() {
               <span className="font-bold text-xl text-gray-900">KuiperPros</span>
             </Link>
 
+            {/* Aggregate Rating Badge - Early Trust Signal */}
+            <div className="hidden lg:flex items-center gap-2 px-4 py-2 bg-white rounded-lg shadow-md border border-gray-200">
+              <div className="flex items-center gap-0.5">
+                {[...Array(5)].map((_, i) => (
+                  <Star
+                    key={i}
+                    className="w-4 h-4 fill-yellow-400 text-yellow-400"
+                  />
+                ))}
+              </div>
+              <div className="border-l border-gray-300 pl-2">
+                <div className="text-sm font-bold text-gray-900">4.8/5</div>
+                <div className="text-xs text-gray-600">247 reviews</div>
+              </div>
+            </div>
+
             <div className="hidden md:flex items-center space-x-8">
+              <Link 
+                href="/blog/what-is-amazon-project-kuiper" 
+                className="text-gray-900 hover:text-brand-600 transition font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 rounded-md px-2 py-1"
+              >
+                Why Kuiper
+              </Link>
               <div className="relative group">
                 <button 
                   className="text-gray-900 hover:text-brand-600 transition flex items-center gap-1 font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 rounded-md px-2 py-1"
                   aria-expanded="false"
                   aria-haspopup="true"
                 >
-                  Installation
+                  Services
+                  <ChevronDown className="h-4 w-4" aria-hidden="true" />
+                </button>
+                <div className="absolute left-0 mt-2 w-56 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-200 border border-gray-100">
+                  <div className="py-2">
+                    <Link 
+                      href="/quote" 
+                      className="block px-4 py-2.5 text-sm text-gray-900 hover:bg-brand-50 hover:text-brand-600 transition focus-visible:outline-none focus-visible:bg-brand-50 focus-visible:text-brand-600"
+                    >
+                      <div className="font-semibold">Starlink Installation</div>
+                      <div className="text-xs text-gray-500">Available Now</div>
+                    </Link>
+                    <Link 
+                      href="#kuiper-waitlist" 
+                      className="block px-4 py-2.5 text-sm text-gray-900 hover:bg-brand-50 hover:text-brand-600 transition focus-visible:outline-none focus-visible:bg-brand-50 focus-visible:text-brand-600"
+                    >
+                      <div className="font-semibold">Kuiper Installation</div>
+                      <div className="text-xs text-accent-600">Q1 2026 Launch</div>
+                    </Link>
+                    <div className="border-t border-gray-100 my-1"></div>
+                    <Link 
+                      href="/installation-guide" 
+                      className="block px-4 py-2.5 text-sm text-gray-900 hover:bg-brand-50 hover:text-brand-600 transition focus-visible:outline-none focus-visible:bg-brand-50 focus-visible:text-brand-600"
+                    >
+                      Commercial Installation
+                    </Link>
+                  </div>
+                </div>
+              </div>
+              <Link 
+                href="#coverage-checker" 
+                className="text-gray-900 hover:text-brand-600 transition font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 rounded-md px-2 py-1"
+              >
+                Coverage
+              </Link>
+              <div className="relative group">
+                <button 
+                  className="text-gray-900 hover:text-brand-600 transition flex items-center gap-1 font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 rounded-md px-2 py-1"
+                  aria-expanded="false"
+                  aria-haspopup="true"
+                >
+                  Resources
                   <ChevronDown className="h-4 w-4" aria-hidden="true" />
                 </button>
                 <div className="absolute left-0 mt-2 w-56 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-200 border border-gray-100">
@@ -42,63 +105,37 @@ export default function Navigation() {
                       href="/installation-guide" 
                       className="block px-4 py-2.5 text-sm text-gray-900 hover:bg-brand-50 hover:text-brand-600 transition focus-visible:outline-none focus-visible:bg-brand-50 focus-visible:text-brand-600"
                     >
-                      Installation Guide
+                      How It Works
+                    </Link>
+                    <Link 
+                      href="#faq" 
+                      className="block px-4 py-2.5 text-sm text-gray-900 hover:bg-brand-50 hover:text-brand-600 transition focus-visible:outline-none focus-visible:bg-brand-50 focus-visible:text-brand-600"
+                    >
+                      FAQs
+                    </Link>
+                    <Link 
+                      href="/blog" 
+                      className="block px-4 py-2.5 text-sm text-gray-900 hover:bg-brand-50 hover:text-brand-600 transition focus-visible:outline-none focus-visible:bg-brand-50 focus-visible:text-brand-600"
+                    >
+                      Blog
                     </Link>
                     <Link 
                       href="/kuiper-vs-starlink-installation" 
                       className="block px-4 py-2.5 text-sm text-gray-900 hover:bg-brand-50 hover:text-brand-600 transition focus-visible:outline-none focus-visible:bg-brand-50 focus-visible:text-brand-600"
                     >
-                      Kuiper vs Competitors
+                      Kuiper vs Starlink
                     </Link>
                   </div>
                 </div>
               </div>
-              <div className="relative group">
-                <button 
-                  className="text-gray-900 hover:text-brand-600 transition flex items-center gap-1 font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 rounded-md px-2 py-1"
-                  aria-expanded="false"
-                  aria-haspopup="true"
-                >
-                  Locations
-                  <ChevronDown className="h-4 w-4" aria-hidden="true" />
-                </button>
-                <div className="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-200 border border-gray-100">
-                  <div className="py-2">
-                    <Link 
-                      href="/locations/california" 
-                      className="block px-4 py-2.5 text-sm text-gray-900 hover:bg-brand-50 hover:text-brand-600 transition focus-visible:outline-none focus-visible:bg-brand-50 focus-visible:text-brand-600"
-                    >
-                      California
-                    </Link>
-                    <Link 
-                      href="/locations/texas" 
-                      className="block px-4 py-2.5 text-sm text-gray-900 hover:bg-brand-50 hover:text-brand-600 transition focus-visible:outline-none focus-visible:bg-brand-50 focus-visible:text-brand-600"
-                    >
-                      Texas
-                    </Link>
-                    <Link 
-                      href="/locations/florida" 
-                      className="block px-4 py-2.5 text-sm text-gray-900 hover:bg-brand-50 hover:text-brand-600 transition focus-visible:outline-none focus-visible:bg-brand-50 focus-visible:text-brand-600"
-                    >
-                      Florida
-                    </Link>
-                  </div>
-                </div>
-              </div>
-              <Link 
-                href="/blog" 
-                className="text-gray-900 hover:text-brand-600 transition font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 rounded-md px-2 py-1"
-              >
-                Blog
-              </Link>
               <Link 
                 href="/technician/apply" 
                 className="text-gray-900 hover:text-brand-600 transition font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 rounded-md px-2 py-1"
               >
                 For Technicians
               </Link>
-              <Link href="/quote">
-                <Button className="shadow-md hover:shadow-lg transition-shadow">Get Installation Quote</Button>
+              <Link href="#kuiper-waitlist">
+                <Button className="bg-accent-500 hover:bg-accent-600 text-brand-900 shadow-md hover:shadow-lg transition-all">Reserve Installation</Button>
               </Link>
             </div>
 
@@ -126,39 +163,54 @@ export default function Navigation() {
             <div className="md:hidden py-4 border-t border-gray-100">
               <div className="flex flex-col space-y-1">
                 <Link 
+                  href="/blog/what-is-amazon-project-kuiper" 
+                  className="text-gray-900 hover:text-brand-600 hover:bg-brand-50 px-4 py-3 rounded-md transition font-medium"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Why Kuiper
+                </Link>
+                <div className="px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                  Services
+                </div>
+                <Link 
+                  href="/quote" 
+                  className="text-gray-900 hover:text-brand-600 hover:bg-brand-50 px-4 py-3 rounded-md transition"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <div className="font-semibold">Starlink Installation</div>
+                  <div className="text-xs text-gray-500">Available Now</div>
+                </Link>
+                <Link 
+                  href="#kuiper-waitlist" 
+                  className="text-gray-900 hover:text-brand-600 hover:bg-brand-50 px-4 py-3 rounded-md transition"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <div className="font-semibold">Kuiper Installation</div>
+                  <div className="text-xs text-accent-600">Q1 2026 Launch</div>
+                </Link>
+                <Link 
+                  href="/installation-guide" 
+                  className="text-gray-900 hover:text-brand-600 hover:bg-brand-50 px-4 py-3 rounded-md transition"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Commercial Installation
+                </Link>
+                <div className="px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                  Resources
+                </div>
+                <Link 
                   href="/installation-guide" 
                   className="text-gray-900 hover:text-brand-600 hover:bg-brand-50 px-4 py-3 rounded-md transition font-medium"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  Installation Guide
+                  How It Works
                 </Link>
                 <Link 
-                  href="/kuiper-vs-starlink-installation" 
+                  href="#faq" 
                   className="text-gray-900 hover:text-brand-600 hover:bg-brand-50 px-4 py-3 rounded-md transition font-medium"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  Kuiper vs Competitors
-                </Link>
-                <Link 
-                  href="/locations/california" 
-                  className="text-gray-900 hover:text-brand-600 hover:bg-brand-50 px-4 py-3 rounded-md transition font-medium"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  California
-                </Link>
-                <Link 
-                  href="/locations/texas" 
-                  className="text-gray-900 hover:text-brand-600 hover:bg-brand-50 px-4 py-3 rounded-md transition font-medium"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Texas
-                </Link>
-                <Link 
-                  href="/locations/florida" 
-                  className="text-gray-900 hover:text-brand-600 hover:bg-brand-50 px-4 py-3 rounded-md transition font-medium"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Florida
+                  FAQs
                 </Link>
                 <Link 
                   href="/blog" 
@@ -168,14 +220,28 @@ export default function Navigation() {
                   Blog
                 </Link>
                 <Link 
+                  href="/kuiper-vs-starlink-installation" 
+                  className="text-gray-900 hover:text-brand-600 hover:bg-brand-50 px-4 py-3 rounded-md transition font-medium"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Kuiper vs Starlink
+                </Link>
+                <Link 
+                  href="#coverage-checker" 
+                  className="text-gray-900 hover:text-brand-600 hover:bg-brand-50 px-4 py-3 rounded-md transition font-medium"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Coverage
+                </Link>
+                <Link 
                   href="/technician/apply" 
                   className="text-gray-900 hover:text-brand-600 hover:bg-brand-50 px-4 py-3 rounded-md transition font-medium"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   For Technicians
                 </Link>
-                <Link href="/quote" className="mt-2" onClick={() => setIsMobileMenuOpen(false)}>
-                  <Button className="w-full">Get Installation Quote</Button>
+                <Link href="#kuiper-waitlist" className="mt-2" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Button className="w-full bg-accent-500 hover:bg-accent-600 text-brand-900">Reserve Installation</Button>
                 </Link>
               </div>
             </div>

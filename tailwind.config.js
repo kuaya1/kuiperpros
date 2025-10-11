@@ -96,41 +96,57 @@ module.exports = {
     },
     extend: {
       colors: {
+        // Kuiper Primary - Deep Space Navy (Authority, Trust, Aerospace)
         brand: {
-          50: '#e6f0ff',
-          100: '#cce1ff',
-          200: '#99c3ff',
-          300: '#66a5ff',
-          400: '#3387ff',
-          500: '#0069ff',
-          600: '#0054cc',
-          700: '#003f99',
-          800: '#002a66',
-          900: '#0a1128', // Deep Space Blue
+          50: '#e8edf7',
+          100: '#d1dbef',
+          200: '#a3b7df',
+          300: '#7593cf',
+          400: '#476fbf',
+          500: '#1a4baf', // Kuiper Primary Navy
+          600: '#153c8c',
+          700: '#102d69',
+          800: '#0a1e46',
+          900: '#050f23', // Deep Space
         },
+        // Kuiper Accent - Orbital Cyan (Innovation, Technology, LEO Satellites)
         accent: {
-          50: '#e6fbff',
-          100: '#ccf7ff',
-          200: '#99efff',
-          300: '#66e7ff',
-          400: '#33dfff',
-          500: '#00d9ff', // Vibrant Cyan
-          600: '#00adc9',
-          700: '#008296',
-          800: '#005663',
-          900: '#002b32',
+          50: '#e6f9ff',
+          100: '#ccf3ff',
+          200: '#99e7ff',
+          300: '#66dbff',
+          400: '#33cfff',
+          500: '#00c3ff', // Kuiper Cyan - Satellite Orbit
+          600: '#009ccc',
+          700: '#007599',
+          800: '#004e66',
+          900: '#002733',
         },
+        // Amazon Orange - Subtle Integration (Partnership, Energy, Action)
         secondary: {
-          50: '#fff3ed',
-          100: '#ffe7db',
-          200: '#ffcfb7',
-          300: '#ffb793',
-          400: '#ff9f6f',
-          500: '#ff6b35', // Warm Orange
-          600: '#cc562a',
-          700: '#99411f',
-          800: '#662b15',
-          900: '#33160a',
+          50: '#fff5e6',
+          100: '#ffebcc',
+          200: '#ffd799',
+          300: '#ffc366',
+          400: '#ffaf33',
+          500: '#ff9900', // Amazon Orange
+          600: '#cc7a00',
+          700: '#995c00',
+          800: '#663d00',
+          900: '#331f00',
+        },
+        // Kuiper Silver - Aerospace Metallic (Satellite Hardware, Premium)
+        kuiper: {
+          50: '#f7f9fb',
+          100: '#eff3f7',
+          200: '#dfe7ef',
+          300: '#cbd7e3',
+          400: '#a8bcd3',
+          500: '#7e9aba', // Metallic Silver
+          600: '#5f7a99',
+          700: '#475d77',
+          800: '#2f3f55',
+          900: '#1a2333',
         },
         // New color schemes for different content types
         location: {
@@ -161,6 +177,7 @@ module.exports = {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
         display: ['Space Grotesk', 'Inter', 'system-ui', 'sans-serif'],
+        mono: ['JetBrains Mono', 'Courier New', 'monospace'], // For technical specs
       },
       spacing: {
         '72': '18rem',
@@ -190,6 +207,9 @@ module.exports = {
         'scale-in': 'scaleIn 0.3s ease-out',
         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'float': 'float 6s ease-in-out infinite',
+        'orbit': 'orbit 20s linear infinite',
+        'satellite': 'satellite 30s linear infinite',
+        'glow': 'glow 2s ease-in-out infinite alternate',
       },
       keyframes: {
         fadeIn: {
@@ -212,11 +232,28 @@ module.exports = {
           '0%, 100%': { transform: 'translateY(0px)' },
           '50%': { transform: 'translateY(-20px)' },
         },
+        orbit: {
+          '0%': { transform: 'rotate(0deg) translateX(100px) rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg) translateX(100px) rotate(-360deg)' },
+        },
+        satellite: {
+          '0%': { transform: 'translateX(-100%) translateY(0)' },
+          '50%': { transform: 'translateX(50%) translateY(-30px)' },
+          '100%': { transform: 'translateX(200%) translateY(0)' },
+        },
+        glow: {
+          '0%': { boxShadow: '0 0 5px #00c3ff, 0 0 10px #00c3ff' },
+          '100%': { boxShadow: '0 0 10px #00c3ff, 0 0 20px #00c3ff, 0 0 30px #00c3ff' },
+        },
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
         'space-pattern': "url('data:image/svg+xml,%3Csvg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\" fill-rule=\"evenodd\"%3E%3Cg fill=\"%239C92AC\" fill-opacity=\"0.05\"%3E%3Cpath d=\"M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')",
+        'orbit-pattern': "url('data:image/svg+xml,%3Csvg width=\"100\" height=\"100\" viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Ccircle cx=\"50\" cy=\"50\" r=\"40\" stroke=\"%2300c3ff\" stroke-width=\"0.5\" fill=\"none\" opacity=\"0.1\"/%3E%3Ccircle cx=\"50\" cy=\"50\" r=\"30\" stroke=\"%2300c3ff\" stroke-width=\"0.5\" fill=\"none\" opacity=\"0.1\"/%3E%3Ccircle cx=\"50\" cy=\"50\" r=\"20\" stroke=\"%2300c3ff\" stroke-width=\"0.5\" fill=\"none\" opacity=\"0.1\"/%3E%3C/svg%3E')",
+        'satellite-grid': "url('data:image/svg+xml,%3Csvg width=\"80\" height=\"80\" viewBox=\"0 0 80 80\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\" stroke=\"%231a4baf\" stroke-width=\"1\" opacity=\"0.05\"%3E%3Cpath d=\"M0 0L80 80M80 0L0 80\"/%3E%3C/g%3E%3C/svg%3E')",
+        'kuiper-hero': 'linear-gradient(135deg, #050f23 0%, #0a1e46 50%, #1a4baf 100%)',
+        'kuiper-card': 'linear-gradient(to bottom right, #e8edf7, #d1dbef)',
       },
     },
   },
